@@ -1,0 +1,72 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        .bg{
+            width:300px;
+            height:200px;
+            background-color: aquamarine;
+            text-align: center;
+            padding-top: 100px;
+            border: 1px solid blue;
+            margin-bottom: 50px;
+        }
+        .content{
+            width:200px;
+            height:100px;
+            background-color: brown;
+            margin: auto;
+            background-position: center center;
+            transform: translateY(0px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class='bg'>
+        <div class='content' id='image'></div>
+    </div>
+        
+    <div class='bg'>
+        <div class='content'></div>
+    </div>
+        
+    <div class='bg'>
+        <div class='content'></div>
+    </div>
+
+    
+    <script>
+       if(document.documentElement.clientWidth > 1000){
+            window.addEventListener('scroll', movement, false);
+       }       
+        
+        let a=0;
+        let w = pageYOffset;
+        let pyo = w;
+        
+        
+        function movement(){
+            a = a+10;
+            
+            let contents = document.getElementsByClassName('content');
+            for(let i=0; i<contents.length; i++){
+                console.log(pyo);
+                console.log(pageYOffset);
+                if(a<200){
+                    if(pyo<pageYOffset){
+                        a=a-10;
+                        pyo = pageYOffset;
+                    }
+                    
+                    else{
+                        pyo = pageYOffset;
+                    }
+                     contents[i].style.transform = 'translateY(' + a + 'px)';
+                }
+                
+            }
+        }
+    </script>
+</body>   
+</html>
