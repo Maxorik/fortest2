@@ -2,70 +2,327 @@
 <html>
 <head>
     <style>
-        .bg{
-            width:300px;
-            height:200px;
-            background-color: aquamarine;
-            text-align: center;
-            padding-top: 100px;
-            border: 1px solid blue;
-            margin-bottom: 50px;
+        body{
+            font-size: 1em;
+            font-family: "Open Sans",sans-serif;
+            color: #2f3239;
         }
-        .content{
-            width:200px;
-            height:100px;
-            background-color: brown;
-            margin: auto;
-            background-position: center center;
-            transform: translateY(0px);
+        
+        .main_info{
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 5%;
+            margin-bottom: 0;
+            padding: 2%;
+            background-color: antiquewhite;
         }
+    
+        
+        input{
+            width:60%;
+            height: 3em;
+            font-size: 1em;
+            font-family: "Open Sans",sans-serif;
+            padding: 0 2%;
+            background-color: #f3f3f3;
+            border: 1px solid #cecece;
+        }
+        
+        ::-webkit-inner-spin-button { margin: auto; }
 
+        .for_btns{
+            display: flex;
+            justify-content: center;
+        }
+        
+        .btn{
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            width: 20%;
+            text-align: center;
+            padding: 10px 20px;
+        }
+        
+        .total{
+            background-color: #37c781;
+            margin-right: 1%;
+        }
+        
+        .total:hover{
+            background-color: #20a866;
+        }
+        
+        .reset{
+             background-color: #4C4C4C;
+        }
+    /*-----------------------------------------------------------------*/    
+        
+         .date_here{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5%;
+        }
+        
+        .hide_info{
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            padding: 2%;
+            margin-left: 5%;
+            font-weight: bold;
+            background-color: #e4ddcb;
+            opacity:0;
+            transition: opacity 0.5s;
+            margin-top:0;
+        }
+        
+        .small_inp{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width:100%;
+            border: 1px solid #f07d7d;
+            text-align: center;
+        }
+        
+        .small_info{
+            margin: 0;
+            padding: 0;
+            max-width: 25%;
+            margin-left: 5%;
+        }
+       
+        .days{
+            display: flex;
+            justify-content:flex-end;
+            align-items: center;
+            width: 60%;
+        }
+        
+        .small_info label{
+            line-height: 1.5em;
+        }
+        
+        .s_dayall{
+            margin-left: 15%;
+            margin-right: -2%;
+        }
+    
+        .dop{
+            justify-content: space-around;
+            text-align: center;
+        }
+    
     </style>
 </head>
 <body>
-    <div class='bg'>
-        <div class='content' id='image'></div>
+    <div class='main_info'>
+        <div class='date_here'>
+            <div>Начальная дата</div><input type='date' class='date_beg'>
+        </div>
+        <div class='date_here'>
+            <div>Конечная дата</div><input type='date' class='date_end'>
+        </div>
+        <div class='for_btns'>
+            <div class='btn total'>Рассчитать</div>
+            <div class='btn reset'>Сбросить</div>
+        </div>
     </div>
+    
+    <div class='hide_info'>
+        <div class='date_here'>
+            <div>Времени между датами</div>
+            <div class='days'>
+            <div class='small_info'>
+                <label>лет</label>
+                <input type='text' class='small_inp s_year' readonly>
+            </div>
+            <div class='small_info'>
+                <label>месяцев</label>
+                <input type='text' class='small_inp s_mounth' readonly> 
+            </div>
+            <div class='small_info'>
+                <label>дней</label>
+                <input type='text' class='small_inp s_days' readonly>
+            </div>
+            </div>
+        </div>
         
-    <div class='bg'>
-        <div class='content'></div>
-    </div>
+        <div class='date_here'>
+            <div class='l'>Дней между датами</div>
+            <div class='days'>
+                <input type='text' class='small_inp s_dayall' readonly>
+            </div>
+        </div>
         
-    <div class='bg'>
-        <div class='content'></div>
+        <div class='date_here dop'>
+            <div class='fordatabeg'>
+                <div class='begdatahere'></div>
+                <div class='begweekhere'></div>
+                <div class='begznakhere'>Знак зодиака</div>
+                <div class='begwostyearhere'>Восточный год</div>
+                <div class='begmoondayhere'>Лунный день</div>
+            </div>
+            
+            <div class='fordataend'>
+                <div class='enddatahere'></div>
+                <div class='endweekhere'></div>
+                <div class='endznakhere'>Знак зодиака</div>
+                <div class='endwostyearhere'>Восточный год</div>
+                <div class='endmoondayhere'>Лунный день</div>
+            </div>
+        </div>
     </div>
 
-    
     <script>
-       if(document.documentElement.clientWidth > 1000){
-            window.addEventListener('scroll', movement, false);
-       }       
+        let begin_dates = document.getElementsByClassName('date_beg')[0];
+        let end_dates = document.getElementsByClassName('date_end')[0];
+        let s_year = document.getElementsByClassName('s_year')[0];
+        let s_mounth = document.getElementsByClassName('s_mounth')[0];
+        let s_days = document.getElementsByClassName('s_days')[0];
+        let dayall = document.getElementsByClassName('s_dayall')[0];
+        let hideinfo = document.getElementsByClassName('hide_info')[0];
         
-        let a=0;
-        let w = pageYOffset;
-        let pyo = w;
+        let begdatahere = document.getElementsByClassName('begdatahere')[0];
+        let begznakhere = document.getElementsByClassName('begznakhere')[0];
+        let begwostyearhere = document.getElementsByClassName('begwostyearhere')[0];
+        let begmoondayhere = document.getElementsByClassName('begmoondayhere')[0];
+        let enddatahere = document.getElementsByClassName('enddatahere')[0];
+        let endznakhere = document.getElementsByClassName('endznakhere')[0];
+        let endwostyearhere = document.getElementsByClassName('endwostyearhere')[0];
+        let endmoondayhere = document.getElementsByClassName('endmoondayhere')[0];
+        let begweekhere = document.getElementsByClassName('begweekhere')[0];
+        let endweekhere = document.getElementsByClassName('endweekhere')[0];
         
+        let total_it = document.getElementsByClassName('total')[0];
+        total_it.addEventListener('click', totaldays, false);
         
-        function movement(){
-            a = a+10;
+        let reset_it = document.getElementsByClassName('reset')[0];
+        reset_it.addEventListener('click', resetall, false);
+        
+        let mounthsumdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31]; //ян-дек
+        let weekdays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг','Пятница','Суббота'];
+        let zodiak = [];
+        
+        function totaldays(){
             
-            let contents = document.getElementsByClassName('content');
-            for(let i=0; i<contents.length; i++){
-                console.log(pyo);
-                console.log(pageYOffset);
-                if(a<200){
-                    if(pyo<pageYOffset){
-                        a=a-10;
-                        pyo = pageYOffset;
-                    }
-                    
-                    else{
-                        pyo = pageYOffset;
-                    }
-                     contents[i].style.transform = 'translateY(' + a + 'px)';
+            s_year.value='';
+            s_mounth.value ='';
+            s_days.value = '';
+            
+            let d_b = begin_dates.value.split('-'); //год месяц день
+            let d_e = end_dates.value.split('-');
+            let second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
+            
+            
+            let d_b_js = new Date(d_b[0], d_b[1]-1, d_b[2]); // дата начала
+            let d_e_js = new Date(d_e[0], d_e[1]-1, d_e[2]); // дата конца
+            if(d_e_js>d_b_js){
+                   hideinfo.style.opacity = 1;
+               }
+            let wdb = d_b_js.getDay();
+            let wde = d_e_js.getDay();
+            begweekhere.textContent = weekdays[wdb];
+            endweekhere.textContent = weekdays[wde];
+            
+            
+            let timediff = d_e_js - d_b_js; //мс всего, надо делить на day
+            
+            //дата начала меньше даты конца
+            if(d_b<d_e){  
+                let daybegin = parseInt(d_b[2]);
+                let dayend = parseInt(d_e[2]);
+                let mounthbegin = parseInt(d_b[1]);
+                let mounthend = parseInt(d_e[1]);
+                let yearbegin = parseInt(d_b[0]);
+                let yearend = parseInt(d_e[0]);
+                
+                let yearleft = yearend - yearbegin; //лет осталось
+                let mounthleft = mounthend - mounthbegin; //месяцев осталось
+                let dayleft = 0; //дней осталось
+  
+                let dd = mounthbegin-1; //месяц для массива
+                let ee = mounthend-1;
+                
+                
+                //ост дней: часть в начале и все из конца
+                if(mounthend !== mounthbegin){
+                    dayleft = dayend + (mounthsumdays[dd] - daybegin);
                 }
                 
+                //если в одном месяце
+                else if(mounthend == mounthbegin){
+                    dayleft = dayend - daybegin;
+                }
+                
+                //если месяцы разные
+                if(mounthend>mounthbegin){
+                    if(dayleft > mounthsumdays[ee]){
+                        dayleft = dayleft - mounthsumdays[dd];
+                    }
+                    
+                    if(daybegin>dayend){
+                        mounthleft = mounthleft - 1;
+                    }
+                }
+                
+                if(mounthend<mounthbegin){
+                    if(dayleft > mounthsumdays[ee]){
+                        dayleft = dayleft - mounthsumdays[dd];
+                    }
+                    if(daybegin<dayend){
+                        mounthleft = mounthleft + 1;
+                    }
+                }
+                
+                //если года разные
+                if(yearend > yearbegin){
+                    if(mounthend < mounthbegin){
+                        yearleft = yearleft -1;
+                        mounthleft+=11;
+                    }
+                }
+                
+                //если daybegin больше dayend
+                if(daybegin>dayend){
+                    dayleft = dayleft - 3;
+                }
+                
+                //учет високосных лет
+                let yearmin = yearend - yearbegin;
+                let vyears = Math.floor(yearmin/4);
+                dayleft = dayleft + vyears;
+                
+                //присваиваем в инпуты
+                if(yearleft != 0){
+                    s_year.value = yearleft;
+                }
+                
+                if(mounthleft != 0){
+                    s_mounth.value = mounthleft;
+                }
+                
+                s_days.value = dayleft;
+                dayall.value = timediff/day; 
+                
+                begdatahere.textContent = d_b[2]+'.'+d_b[1]+'.'+d_b[0];
+                enddatahere.textContent = d_e[2]+'.'+d_e[1]+'.'+d_e[0];
+                         
             }
+            
+            else{
+                //false
+            }
+            
+        }
+        
+        function resetall(){
+            hideinfo.style.opacity = 0;
+            begin_dates.value='';
+            end_dates.value='';
         }
     </script>
 </body>   
