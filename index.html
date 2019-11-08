@@ -311,7 +311,11 @@
                 
                 //если года разные
                 if(yearend > yearbegin){
-                    if(mounthend <= mounthbegin){
+                    if(mounthend < mounthbegin){
+                        yearleft = yearleft -1;
+                        mounthleft+=11;
+                    }
+                    if(mounthend == mounthbegin && dayend<daybegin){
                         yearleft = yearleft -1;
                         mounthleft+=11;
                     }
