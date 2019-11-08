@@ -301,25 +301,25 @@
 
                 //определение зодиака
                 function zodiak(d, m){
-                    if (m==1 && d>=21 || m==2 && d<=19) return "Водолей (21.01 - 19.02)";
-                    else if (m==2 && d>=20 || m==3 && d<=20) return "Рыбы (20.02 - 20.03)";
-                    else if (m==3 && d>=21 || m==4 && d<=20) return "Овен (21.03 - 20.04)";
-                    else if (m==4 && d>=21 || m==5 && d<=21) return "Телец (21.04 - 21.05)";
-                    else if (m==5 && d>=22 || m==6 && d<=21) return "Близнецы (22.05 - 21.06)";
-                    else if (m==6 && d>=22 || m==7 && d<=22) return "Рак (22.06 - 22.07)";
-                    else if (m==7 && d>=23 || m==8 && d<=21) return "Лев (23.07 - 21.08)";
-                    else if (m==8 && d>=22 || m==9 && d<=23) return "Дева (22.08 - 23.09)";
-                    else if (m==9 && d>=24 || m==10 && d<=23) return "Весы (24.09 - 23.10)";
-                    else if (m==10 && d>=24 || m==11 && d<=22) return "Скорпион (24.10 - 22.11)";
-                    else if (m==11 && d>=23 || m==12 && d<=22) return "Стрелец (23.11 - 22.12)";
-                    else if (m==12 && d>=22 || m==1 && d<=20) return "Козерог (22.12 - 20.01)";
+                    if (m==1 && d>=21 || m==2 && d<=19) return "Водолей" + '<br />'+ "(21.01 - 19.02)";
+                    else if (m==2 && d>=20 || m==3 && d<=20) return "Рыбы" + '<br />'+ "(20.02 - 20.03)";
+                    else if (m==3 && d>=21 || m==4 && d<=20) return "Овен" + '<br />'+ "(21.03 - 20.04)";
+                    else if (m==4 && d>=21 || m==5 && d<=21) return "Телец" + '<br />'+ "(21.04 - 21.05)";
+                    else if (m==5 && d>=22 || m==6 && d<=21) return "Близнецы" + '<br />'+ "(22.05 - 21.06)";
+                    else if (m==6 && d>=22 || m==7 && d<=22) return "Рак" + '<br />'+ "(22.06 - 22.07)";
+                    else if (m==7 && d>=23 || m==8 && d<=21) return "Лев" + '<br />'+ "(23.07 - 21.08)";
+                    else if (m==8 && d>=22 || m==9 && d<=23) return "Дева" + '<br />'+ "(22.08 - 23.09)";
+                    else if (m==9 && d>=24 || m==10 && d<=23) return "Весы" + '<br />'+ "(24.09 - 23.10)";
+                    else if (m==10 && d>=24 || m==11 && d<=22) return "Скорпион" + '<br />'+ "(24.10 - 22.11)";
+                    else if (m==11 && d>=23 || m==12 && d<=22) return "Стрелец" + '<br />'+ "(23.11 - 22.12)";
+                    else if (m==12 && d>=22 || m==1 && d<=20) return "Козерог" + '<br />'+ "(22.12 - 20.01)";
                 }
             
                 let zodiakbeg = zodiak(daybegin, mounthbegin);
                 let zodiakend = zodiak(dayend, mounthend);
                 
-                begznakhere.textContent = zodiakbeg;
-                endznakhere.textContent = zodiakend;
+                begznakhere.innerHTML = zodiakbeg;
+                endznakhere.innerHTML = zodiakend;
                     
                 //ост дней: часть в начале и все из конца
                 if(mounthend !== mounthbegin){
