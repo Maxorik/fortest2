@@ -156,6 +156,9 @@
             .tohr{
                 border-bottom: 1px solid #f07d7d;
             }
+            .fordatabeg{
+                 border-right: 1px solid #f07d7d;
+            }
         }
     
     </style>
@@ -365,6 +368,15 @@
                 
                 //если daybegin больше dayend
                 if(daybegin>dayend){
+                    if(checkfromto.checked){
+                        //dayleft = dayleft - 1;
+                    }
+                    else{
+                        dayleft = dayleft - 1;
+                    }
+                }
+                
+                if(daybegin<dayend){
                     if(checkfromto.checked){
                         //dayleft = dayleft - 1;
                     }
