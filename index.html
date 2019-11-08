@@ -149,6 +149,13 @@
                 max-width: 100vw;
                 font-size: 2em;
             }
+            .check{
+                width:10%;
+            }
+            
+            .tohr{
+                border-bottom: #f07d7d;
+            }
         }
     
     </style>
@@ -164,7 +171,7 @@
         <div class='warning'>Даты введены некорректно</div>
         <div class='checkhere'>
             <input type='checkbox' class='check'>
-            <p>Включать даты От и До</p>
+            <p>Включать конечную дату</p>
         </div>
         <div class='for_btns'>
             <div class='calcbtn total'>Рассчитать</div>
@@ -200,17 +207,17 @@
         
         <div class='date_here dop'>
             <div class='fordatabeg'>
-                <div class='begdatahere'></div>
-                <div class='begweekhere'></div>
-                <div class='begznakhere'></div>
-                <div class='begwostyearhere'></div>
+                <div class='begdatahere tohr'></div>
+                <div class='begweekhere tohr'></div>
+                <div class='begznakhere tohr'></div>
+                <div class='begwostyearhere tohr'></div>
             </div>
             
             <div class='fordataend'>
-                <div class='enddatahere'></div>
-                <div class='endweekhere'></div>
-                <div class='endznakhere'></div>
-                <div class='endwostyearhere'></div>
+                <div class='enddatahere tohr'></div>
+                <div class='endweekhere tohr'></div>
+                <div class='endznakhere tohr'></div>
+                <div class='endwostyearhere tohr'></div>
             </div>
         </div>
     </div>
@@ -258,13 +265,11 @@
             
             let d_b_js = new Date(d_b[0], d_b[1]-1, d_b[2]); // дата начала
             let d_e_js = new Date(d_e[0], d_e[1]-1, d_e[2]); // дата конца
-            
-            let oven = ['21', '03', '20', '04'];
-            
-            
+
             if(d_e_js>d_b_js){
                    hideinfo.style.opacity = 1;
                }
+            
             let wdb = d_b_js.getDay();
             let wde = d_e_js.getDay();
             begweekhere.textContent = weekdays[wdb];
@@ -361,10 +366,10 @@
                 //если daybegin больше dayend
                 if(daybegin>dayend){
                     if(checkfromto.checked){
-                        dayleft = dayleft - 1;
+                        //dayleft = dayleft - 1;
                     }
                     else{
-                        dayleft = dayleft - 3;
+                        dayleft = dayleft - 1;
                     }
                 }
                 
