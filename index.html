@@ -319,6 +319,10 @@
                         yearleft = yearleft -1;
                         mounthleft+=11;
                     }
+                    
+                    if(dayleft<0){
+                        dayleft = dayleft + mounthsumdays[dd];
+                    }
                 }
                 
                 //если daybegin больше dayend
