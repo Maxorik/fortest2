@@ -171,7 +171,6 @@
                 <div class='begweekhere'></div>
                 <div class='begznakhere'></div>
                 <div class='begwostyearhere'></div>
-                <div class='begmoondayhere'>Лунный день</div>
             </div>
             
             <div class='fordataend'>
@@ -179,7 +178,6 @@
                 <div class='endweekhere'></div>
                 <div class='endznakhere'></div>
                 <div class='endwostyearhere'></div>
-                <div class='endmoondayhere'>Лунный день</div>
             </div>
         </div>
     </div>
@@ -327,7 +325,6 @@
                 //учет високосных лет
                 let yearmin = yearend - yearbegin;
                 let vyears = Math.floor(yearmin/4);
-                dayleft = dayleft + vyears;
                 
                 //присваиваем в инпуты
                 if(yearleft != 0){
@@ -339,7 +336,7 @@
                 }
                 
                 s_days.value = dayleft;
-                dayall.value = parseInt(timediff/day); 
+                dayall.value = parseInt(timediff/day) + vyears; 
                 
                 begdatahere.textContent = d_b[2]+'.'+d_b[1]+'.'+d_b[0];
                 enddatahere.textContent = d_e[2]+'.'+d_e[1]+'.'+d_e[0];
