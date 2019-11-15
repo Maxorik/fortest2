@@ -3,7 +3,8 @@
   top: 1px;
   width: 24px;
   height: 24px;
-  border: 1px solid #666cf0;
+  border: 1px solid #fff;
+  background-color: #3598db;
   border-radius: 100%;
   vertical-align: middle;
   cursor: pointer;
@@ -16,7 +17,7 @@
   width: 14px;
   height: 14px;
   border-radius: 100%;
-  background: #666cf0;
+  background: #fff;
   transform: scale(0);
 }
 .radio:not(:first-child) {

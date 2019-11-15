@@ -6,7 +6,7 @@
             padding: 0;
             font-size: 10%;
             font-family: "Open Sans",sans-serif;
-            color: #2f3239;
+            color: #d4dee4;
         }
         
         /*часть с вводом дат*/
@@ -16,12 +16,12 @@
             max-width: 500px;
             margin-bottom: 0;
             padding: 2%;
-            background-color: #acc5c6;
+            background-color: #9aa5ab;
         }
     
         /*инпуты калькулятора*/
         .calcinp{
-            width:4em;
+            width:60%;
             height: 3em;
             font-size: 1em;
             font-family: "Open Sans",sans-serif;
@@ -49,33 +49,46 @@
         
         /*кнопка расчета*/
         .total, .totals, .total3{
-            background-color: #37c781;
+            background-color: #3598db;
+            border: 2px solid #fff;
             margin-right: 1%;
         }
         
         .total:hover, .totals:hover, .total3:hover{
-            background-color: #20a866;
+            background-color: #fff;
+            color:#4C4C4C;
         }
         
         /*кнопка Сбросить*/
         .reset, .resets, .reset3{
-             background-color: #4C4C4C;
+            background-color: #4C4C4C;
+            border: 2px solid #fff;
+        }
+
+        .reset:hover, .resets:hover, .reset3:hover{
+            background-color: #8f8f8f;
         }
     /*-----------------------------------------------------------------*/    
         
         
         /*рассчитываемая информация*/
-        .hide_info, .hide_infos, .hide_info3{
+        .hide_info, .hide_infos, .hide_info3, .hide_info55{
             display: flex;
             flex-direction: column;
             justify-content: center;
+            max-width: 500px;
             padding: 2%;
             font-weight: bold;
-            background-color: #d2fdff;
+            background-color: #5a707d;
             opacity:0;
             transition: opacity 0.5s;
-            margin-top:2%;
+            margin-top:0;
         }
+
+.hide_infos{
+    width: 100% !important;
+    margin-top: 10px;
+}
         
         /*инпуты кол-во дней, месяцев, лет*/
         .small_inp{
@@ -83,8 +96,10 @@
             flex-direction: column;
             justify-content: center;
             width:100%;
-            border: 1px solid #f07d7d;
+            border: 1px solid #3598db;
             text-align: center;
+            color:#454753;
+            font-weight: bold;
         }
         
         .small_info{
@@ -113,7 +128,7 @@
         }
     
         .dop{
-            justify-content: center;
+            justify-content: space-around;
             text-align: center;
             display: flex;
         }
@@ -141,7 +156,7 @@
         
         
         .fordatabeg{
-                 border-right: 1px solid #f07d7d;
+                 border-right: 1px solid #3598db;
             }
             
         .fordatabeg, .fordataend{
@@ -172,7 +187,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-top: -1em;
+             margin-top: -1em;
         }
         
         .intbtns{
@@ -188,15 +203,10 @@
             height:2vw;
             cursor: pointer;
         }
-    
-        .howmuch{
-            width:20% !inportant;
-            text-align: center;
-            margin-bottom: 10px;
-        }
+
         
         .intgetwhat{
-            width:100%;
+            width:50%;
         }
         
         .howarif{
@@ -293,9 +303,12 @@
         }
 
 .date_here, .date_heres{
-    margin-top: 2px;
     margin-bottom: 5%;
     text-align: center;
+}
+
+.date_heres div{
+    font-weight: bold;
 }
 
 .border_warning{
@@ -326,6 +339,10 @@ input::-webkit-inner-spin-button {
 }
 
 
+ .intgetwhat{
+            width:100%;
+        }
+
 .calc3here .date_here{
     justify-content: center;
     align-items: center;
@@ -353,6 +370,11 @@ input::-webkit-inner-spin-button {
     line-height: 1em;
 }
 
+.date_here div{
+    color: #fbfbfb;
+    font-weight: bold;
+}
+
 .dayall_work{
     margin-right: 10.5%;
 }
@@ -360,10 +382,21 @@ input::-webkit-inner-spin-button {
 .borderBlue{
     border: 1px solid #0000CD;
 }
-        /*--------------------------------------------------------------------------------------------*/
+
+.howmuch{
+    width: 120% !important;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.rlabel{
+    color: #fff;
+    font-weight: bolder;
+}
+/*--------------------------------------------------------------------------------------------*/
        /*media*/
         @media screen and (max-width: 980px){
-            .main_info, .hide_info, .hide_info3{
+            .main_info, .hide_info, .hide_infos, .hide_info3, .hide_info55{
                 max-width: 100vw;
                 font-size: 1em;
             }
@@ -373,8 +406,7 @@ input::-webkit-inner-spin-button {
             }
             
             .calcbtn{
-                width: 44%;
-                text-align: center;
+                width: 49%;
             }
             
             .small_info label{
