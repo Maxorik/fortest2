@@ -2,101 +2,191 @@
         ВАЖНО!
         В HTML РАЗМЕТКЕ ОБЯЗАТЕЛЬНО ДОЛЖНО БЫТЬ:
         
-        <div class='calc1here'></div>
+        <div class='calc2here'></div>
         
-        ИМЕННО В ЭТОТ ТЕГ ДОБАВИТСЯ КАЛЬКУЛЯТОР НОМЕР 1
+        ИМЕННО В ЭТОТ ТЕГ ДОБАВИТСЯ КАЛЬКУЛЯТОР НОМЕР 2
 */
-        function includeCSS(aFile){
-            let style = window.document.createElement('link')
-            style.href = aFile
-            style.rel = 'stylesheet'
-            document.head.appendChild(style)
+        
+        let calc2here = document.getElementsByClassName('calc2here')[0];
+        let calc2 = document.createElement('div');
+        calc2.innerHTML = "<div class='calcarea'><div class='main_info'><div class='date_heres'><div style='margin-right:10px;'>Дата</div><input type='number' class='small_inp2 s_day22' placeholder='ДД' maxlength='2'><input type='number' class='small_inp2 s_month22' placeholder='ММ' maxlength='2'><input type='number' class='small_inp2 s_year22' placeholder='ГГГГ' maxlength='4'></div><div class='warnings'>Дата введена некорректно</div><div class='interfacecalc'><div class='intbtns'><div class='cntr'><input type='radio' name='rdo' id='opt1' class='hidden-xs-up' checked/><label for='opt1' class='radio'></label><label for='opt1' class='rlabel boldl'>+</label><input type='radio' name='rdo' id='opt2' class='hidden-xs-up'/><label for='opt2' class='radio'></label><label for='opt2' class='rlabel boldl'>-</label></div><div class='howarif'><input type='number' class='calcinp howmuch'></div><div class='intgetwhat'><input type='radio' name='setdataparam' id='opt3' class='hidden-xs-up' checked/><label for='opt3' class='radio'></label><label for='opt3' class='rlabel'>Дней</label><input type='radio' name='setdataparam' id='opt4' class='hidden-xs-up'/><label for='opt4' class='radio'></label><label for='opt4' class='rlabel'>Месяцев</label><input type='radio' name='setdataparam' id='opt5' class='hidden-xs-up'/><label for='opt5' class='radio'></label><label for='opt5' class='rlabel'>Лет</label></div></div><div class='for_btns'><div class='calcbtn totals'>Рассчитать</div><div class='calcbtn resets'>Сбросить</div></div></div><div class='hide_infos'><div class='date_heres dop'><div class='fordatabegs'><div class='begdataheres tohr'></div><div class='begweekheres tohr'></div><div class='begznakheres tohr'></div><div class='begwostyearheres tohr'></div></div></div></div></div>";
+        
+        calc2here.appendChild(calc2);
+
+        let chplus = document.getElementById('opt1');
+        let chminus = document.getElementById('opt2');
+        let howmuch = document.getElementsByClassName('howmuch')[0];
+        let changeday =document.getElementById('opt3');
+        let changemounth = document.getElementById('opt4');
+        let changeyear = document.getElementById('opt5');
+        let totals = document.getElementsByClassName('totals')[0];
+        let resets = document.getElementsByClassName('resets')[0];
+        let hideinfos = document.getElementsByClassName('hide_infos')[0];
+        
+        let begdataheres = document.getElementsByClassName('begdataheres')[0];
+        let begweekheres = document.getElementsByClassName('begweekheres')[0];
+        let begznakheres = document.getElementsByClassName('begznakheres')[0];
+        let begwostyearheres = document.getElementsByClassName('begwostyearheres')[0];
+
+        let s_days22 = document.getElementsByClassName('s_day22')[0];
+        let s_month22 = document.getElementsByClassName('s_month22')[0];
+        let s_year22 = document.getElementsByClassName('s_year22')[0];
+
+        let mounthsumdays2 = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31];
+        
+        let today = new Date();
+        let td = (today.getDate()).toString();
+        let tm = (today.getMonth()).toString();
+
+        s_days22.addEventListener('input', len2, false);
+        s_month22.addEventListener('input', len2, false);
+        s_year22.addEventListener('input', len4, false);
+
+        function len2(event){
+            let target = event.target;
+            if(target.value.length == 2){
+                let sibl = target.nextElementSibling;
+                target.blur();
+                sibl.focus();
+            }
         }
 
-        includeCSS('calcstyles.css')
-        
-        
-        let calc1here = document.getElementsByClassName('calc1here')[0];
-        let calc1 = document.createElement('div');
-        calc1.innerHTML = "<div class='main_info'> <div class='date_here'> <div>Начальная дата</div><input type='date' class='date_beg calcinp' min='1900-01-01' max='2100-12-31'> </div> <div class='date_here'> <div>Конечная дата</div><input type='date' class='date_end calcinp' min= '1900-01-01' max='2100-12-31'> </div> <div class='warning'>Даты введены некорректно</div> <div class='checkhere'> <input type='checkbox' class='check'> <p>Включать конечную дату</p> </div> <div class='for_btns'> <div class='calcbtn total'>Рассчитать</div> <div class='calcbtn reset'>Сбросить</div> </div> </div> <div class='hide_info'> <div class='date_here'> <div>Времени между датами</div> <div class='days'> <div class='small_info'> <label>лет</label> <input type='text' class='calcinp small_inp s_year' readonly> </div> <div class='small_info'> <label>месяцев</label> <input type='text' class='calcinp small_inp s_mounth' readonly> </div> <div class='small_info'> <label>дней</label> <input type='text' class='calcinp small_inp s_days' readonly> </div> </div> </div> <div class='date_here'> <div class='l'>Дней между датами</div> <div class='days'> <input type='text' class='calcinp small_inp s_dayall' readonly> </div> </div> <div class='date_here dop'> <div class='fordatabeg'> <div class='begdatahere tohr'></div> <div class='begweekhere tohr'></div> <div class='begznakhere tohr'></div> <div class='begwostyearhere tohr'></div> </div> <div class='fordataend'> <div class='enddatahere tohr'></div> <div class='endweekhere tohr'></div> <div class='endznakhere tohr'></div> <div class='endwostyearhere tohr'></div> </div> </div> </div>";
-        
-        calc1here.appendChild(calc1);
-        
-        
-        let begin_dates = document.getElementsByClassName('date_beg')[0];
-        let end_dates = document.getElementsByClassName('date_end')[0];
-        let s_year = document.getElementsByClassName('s_year')[0];
-        let s_mounth = document.getElementsByClassName('s_mounth')[0];
-        let s_days = document.getElementsByClassName('s_days')[0];
-        let dayall = document.getElementsByClassName('s_dayall')[0];
-        let hideinfo = document.getElementsByClassName('hide_info')[0];
-        
-        let warningtext = document.getElementsByClassName('warning')[0];
-        let begdatahere = document.getElementsByClassName('begdatahere')[0];
-        let begznakhere = document.getElementsByClassName('begznakhere')[0];
-        let begwostyearhere = document.getElementsByClassName('begwostyearhere')[0];
-        let begmoondayhere = document.getElementsByClassName('begmoondayhere')[0];
-        let enddatahere = document.getElementsByClassName('enddatahere')[0];
-        let endznakhere = document.getElementsByClassName('endznakhere')[0];
-        let endwostyearhere = document.getElementsByClassName('endwostyearhere')[0];
-        let endmoondayhere = document.getElementsByClassName('endmoondayhere')[0];
-        let begweekhere = document.getElementsByClassName('begweekhere')[0];
-        let endweekhere = document.getElementsByClassName('endweekhere')[0];
-        let checkfromto = document.getElementsByClassName('check')[0];
-        
-        let total_it = document.getElementsByClassName('total')[0];
-        total_it.addEventListener('click', totaldays, false);
-        
-        let reset_it = document.getElementsByClassName('reset')[0];
-        reset_it.addEventListener('click', resetall, false);
-        
-        let mounthsumdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31];
-        let weekdays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг','Пятница','Суббота'];
-        
-        function totaldays(){
-            s_year.value='';
-            s_mounth.value ='';
-            s_days.value = '';
-            
-            let d_b = begin_dates.value.split('-'); //год месяц день
-            let d_e = end_dates.value.split('-');
-            let second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
-            
-            
-            let d_b_js = new Date(d_b[0], d_b[1]-1, d_b[2]); // дата начала
-            let d_e_js = new Date(d_e[0], d_e[1]-1, d_e[2]); // дата конца
+        function len4(event){
+            let target = event.target;
+            if(target.value.length == 4){
+                let sibl = target.parentElement.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
+                target.blur();
+                sibl.focus();
+            }
+        }
 
-            if(d_e_js>d_b_js){
-                   hideinfo.style.opacity = 1;
-               }
+
+        if(td.length<2){
+            td = '0'+td;
+        }
+        
+        if(tm.length<2){
+            tm = '0'+tm;
+        }
+        
+        let settoday= today.getFullYear()+'-'+tm+'-'+td;
+        s_days22.value = td;
+        s_month22.value = +tm+1;
+        s_year22.value = today.getFullYear();
+
+        let totals_it = document.getElementsByClassName('totals')[0];
+        totals_it.addEventListener('click', totalsdays, false);
+        
+        let resets_it = document.getElementsByClassName('resets')[0];
+        resets_it.addEventListener('click', resetsall, false);
+        
+        let weekdays2 = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг','Пятница','Суббота'];
+        
+        function totalsdays(){
+            let s_days22v = s_days22.value;
+            let s_month22v = s_month22.value;
+            let s_year22v = s_year22.value;
             
-            let wdb = d_b_js.getDay();
-            let wde = d_e_js.getDay();
-            begweekhere.textContent = weekdays[wdb];
-            endweekhere.textContent = weekdays[wde];
+            if(s_month22v > 12 || s_month22v == ''){
+                s_month22.classList.add('border_warning');
+                hideinfos.style.opacity = 0;
+            }
+            
+            else if(s_year22v.toString().length<4 || s_year22v == ''){
+                s_year22.classList.add('border_warning');
+                hideinfos.style.opacity = 0;
+            }
+            
+            else if(s_days22v > mounthsumdays2[s_month22v-1] || s_days22v == ''){
+                s_days22.classList.add('border_warning');
+                hideinfos.style.opacity = 0;
+            }
+            
+            else {
+                let smw2 = document.getElementsByClassName('small_inp2');
+                for(let i=0; i<smw2.length; i++){
+                    smw2[i].classList.remove('border_warning');
+                }
+                hideinfos.style.opacity = 1;
+            }
             
             
-            let timediff = d_e_js - d_b_js; //мс всего, надо делить на day
             
-            //дата начала меньше даты конца
-            if(d_b<d_e){  
-                warningtext.style.display = 'none';
-                let daybegin = parseInt(d_b[2]);
-                let dayend = parseInt(d_e[2]);
-                let mounthbegin = parseInt(d_b[1]);
-                let mounthend = parseInt(d_e[1]);
-                let yearbegin = parseInt(d_b[0]);
-                let yearend = parseInt(d_e[0]);
-                
-                let yearleft = yearend - yearbegin; //лет осталось
-                let mounthleft = mounthend - mounthbegin; //месяцев осталось
-                let dayleft = 0; //дней осталось
+            let thedate = [s_year22v, s_month22v, s_days22v];
+            let thedate_js = new Date(thedate[0], thedate[1], thedate[2]); // дата начала
+            let hownum = howmuch.value;
+
+            if(howmuch.value!=''){
+                hideinfos.style.opacity = 1;
+                hownum = +hownum;
+            }
+
+            if(chplus.checked){
+                if(changeday.checked){
+                    thedate_js.setDate(thedate_js.getDate()+hownum);
+                    if(thedate_js.getMonth() == '00' || thedate_js.getMonth() == '0'){
+                        thedate_js.setMonth(thedate_js.getMonth()+1);
+                    }
+                }   
+                else if (changemounth.checked){
+                    thedate_js.setMonth(thedate_js.getMonth()+hownum);
+                }   
+                else if (changeyear.checked){
+                    thedate_js.setFullYear(thedate_js.getFullYear()+hownum);
+                }   
+            }
   
-                let dd = mounthbegin-1; //месяц для массива
-                let ee = mounthend-1;
+            else if(chminus.checked){
+                if(changeday.checked){
+                    thedate_js.setDate(thedate_js.getDate()-hownum);
+                }   
+                else if (changemounth.checked){
+                    thedate_js.setMonth(thedate_js.getMonth()-hownum);
+                }   
+                else if (changeyear.checked){
+                    thedate_js.setFullYear(thedate_js.getFullYear()-hownum);
+                     if(thedate_js.getMonth() == '00' || thedate_js.getMonth() == '0'){
+                        thedate_js.setMonth(thedate_js.getMonth()-1);
+                    }
+                } 
+            }
+            
+            
+            td = (thedate_js.getDate()).toString();
+            tm = (thedate_js.getMonth()).toString();
+
+            if(td.length<2){
+                td = '0'+td;
+            }
+        
+            if(tm.length<2){
+                tm = '0'+tm;
+            }
+            
+            begdataheres.innerHTML = td +'.'+ tm +'.'+ thedate_js.getFullYear();
+            begweekheres.innerHTML =  weekdays2[thedate_js.getDay()];
+                    
+            let d_b_js2 = thedate_js;
+            d_b_js2.setMonth(thedate_js.getMonth()-1);
+
+            function getnumoftheday(date, hours){
+                //let hoursOfOneWeek = 168; // количество часов в одной неделе
+                //let hoursOfOneday = 24;
+                let hourOfMillisecs = 3600000; // количество миллисекунд в одном часе
+                let startTimeOfCurrentYear = (new Date(date.getFullYear(), 0, 1)).getTime(); // время начала текущего года, в миллисекундах
+                let currentTime = date.getTime();
+                let pastTimeOfStartCurrentYear = currentTime - startTimeOfCurrentYear; // прошедшее время с начала года, в миллисекундах
+                return pastTimeOfStartCurrentYear / hourOfMillisecs / hours.toFixed(2) + 1;
+            }
+            
+            let begnumweek2 = parseInt(getnumoftheday(d_b_js2, 168));
+            let begnumday2 = parseInt(getnumoftheday(d_b_js2, 24));
+            
+            begweekheres.innerHTML += '<br>'+'это ' + begnumday2 + ' день года';
+            begweekheres.innerHTML += '<br>'+'это ' + begnumweek2 + ' неделя года';
 
                 //определение зодиака
-                function zodiak(d, m){
+            function zodiak(d, m){
                     if (m==1 && d>=21 || m==2 && d<=19) return "Водолей" + '<br />'+ "(21.01 - 19.02)";
                     else if (m==2 && d>=20 || m==3 && d<=20) return "Рыбы" + '<br />'+ "(20.02 - 20.03)";
                     else if (m==3 && d>=21 || m==4 && d<=20) return "Овен" + '<br />'+ "(21.03 - 20.04)";
@@ -111,95 +201,8 @@
                     else if (m==12 && d>=22 || m==1 && d<=20) return "Козерог" + '<br />'+ "(22.12 - 20.01)";
                 }
             
-                let zodiakbeg = zodiak(daybegin, mounthbegin);
-                let zodiakend = zodiak(dayend, mounthend);
-                
-                begznakhere.innerHTML = zodiakbeg;
-                endznakhere.innerHTML = zodiakend;
-                    
-                //ост дней: часть в начале и все из конца
-                if(mounthend !== mounthbegin){
-                    dayleft = dayend + (mounthsumdays[dd] - daybegin);
-                }
-                
-                //если в одном месяце
-                else if(mounthend == mounthbegin){
-                    dayleft = dayend - daybegin;
-                }
-                
-                //если месяцы разные
-                if(mounthend>mounthbegin){
-                    if(dayleft > mounthsumdays[ee]){
-                        dayleft = dayleft - mounthsumdays[dd];
-                    }
-                    
-                    if(daybegin>dayend){
-                        mounthleft = mounthleft - 1;
-                    }
-                }
-                
-                if(mounthend<mounthbegin){
-                    if(dayleft > mounthsumdays[ee]){
-                        dayleft = dayleft - mounthsumdays[dd];
-                    }
-                    if(daybegin<dayend){
-                        mounthleft = mounthleft + 1;
-                    }
-                }
-                
-                //если года разные
-                if(yearend > yearbegin){
-                    if(mounthend < mounthbegin){
-                        yearleft = yearleft -1;
-                        mounthleft+=11;
-                    }
-                    if(mounthend == mounthbegin && dayend<daybegin){
-                        yearleft = yearleft -1;
-                        mounthleft+=11;
-                    }
-                    
-                    if(dayleft<0){
-                        dayleft = dayleft + mounthsumdays[dd];
-                    }
-                }
-                
-                //если daybegin больше dayend
-                if(daybegin>dayend){
-                    if(checkfromto.checked){
-                        //dayleft = dayleft - 1;
-                    }
-                    else{
-                        dayleft = dayleft - 1;
-                    }
-                }
-                
-                if(daybegin<dayend){
-                    if(checkfromto.checked){
-                        //dayleft = dayleft - 1;
-                    }
-                    else{
-                        dayleft = dayleft - 1;
-                    }
-                }
-                
-                //учет високосных лет
-                let yearmin = yearend - yearbegin;
-                let vyears = Math.floor(yearmin/4);
-                
-                //присваиваем в инпуты
-                if(yearleft != 0){
-                    s_year.value = yearleft;
-                }
-                
-                if(mounthleft != 0){
-                    s_mounth.value = mounthleft;
-                }
-                
-                s_days.value = dayleft;
-                dayall.value = parseInt(timediff/day); 
-                
-                begdatahere.textContent = d_b[2]+'.'+d_b[1]+'.'+d_b[0];
-                enddatahere.textContent = d_e[2]+'.'+d_e[1]+'.'+d_e[0];
+            let zodiakv = zodiak(d_b_js2.getDate(), d_b_js2.getMonth());
+            begznakheres.innerHTML = zodiakv;
                 
                 //лунный год              
                 let yeardates = [
@@ -408,6 +411,7 @@
                 
                 function getmoonyear(y, m, d){
                     let ind = +y - 1900;
+                    m = parseInt(m);
                     let needyear = yeardates[ind].split(' ');
                     if(d>=needyear[0] && m==needyear[1] || m>needyear[1]){
                         let narr = needyear.splice(2,4);
@@ -421,23 +425,18 @@
                     }
                 }
                 
-                let moonbeg = getmoonyear(yearbegin, mounthbegin, daybegin);
-                let moonend = getmoonyear(yearend, mounthend, dayend);
+                let moonbeg = getmoonyear(thedate_js.getFullYear(), tm, td);
                 
-                begwostyearhere.textContent = 'Год '+moonbeg;
-                endwostyearhere.textContent = 'Год '+moonend;
+                begwostyearheres.textContent = 'Год '+moonbeg;
         
             }
-            
-            else{
-                warningtext.style.display = 'block';
-                hideinfo.style.opacity = 0;
-            }
-            
-        }
         
-        function resetall(){
-            hideinfo.style.opacity = 0;
-            begin_dates.value='';
-            end_dates.value='';
+        function resetsall(){
+            hideinfos.style.opacity = 0;
+            howmuch.value='';
+            let smw2 = document.getElementsByClassName('small_inp2');
+                for(let i=0; i<smw2.length; i++){
+                    smw2[i].classList.remove('border_warning');
+                     smw2[i].value='';
+                }
         }
