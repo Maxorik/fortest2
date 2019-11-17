@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='timerstyle.css'>
 </head>
 <body>
-    <div attdate='2018/1/1' attname='начала 2018 года' atttable='yes' id='timerhere'>
+    <div attdate='2020/1/1' attname='Нового года' atttable='yes' id='timerhere'>
         <div id='namehere'></div>
         <div id="clock"></div>
         <div id='texthere'></div>
@@ -21,17 +21,17 @@
         userdate = new Date(userdate[0], userdate[1]-1, userdate[2]);
         
         let m, w, d, H,  S, Y;
-            clock.innerHTML = '<div class="clockandlabel"><span id="year" class="dyear"></span><span id="year_text" class="dyear itlabel">лет </span></div> '                                       
-            + '<div class="clockandlabel"><span id="month" class="dmonth"></span><span id="month_text" class="dmonth itlabel">месяцев </span></div> '                                      
-            + '<div class="clockandlabel"><span id="week" class="dweek"></span><span id="week_text" class="dweek itlabel">недель </span></div> '
-            + '<div class="clockandlabel"><span id="day" class="dday"></span><span id="day_text" class="dday itlabel">дней </span></div> '
-            + '<div class="clockandlabel"><span id="hour" class="dhour"></span><span id="hour_text" class="dhour itlabel">часов </span></div> '
-            + '<div class="clockandlabel"><span id="min" class="dmin"></span><span id="min_text" class="dmin itlabel">   минут </span></div> '
-            + '<div class="clockandlabel"><span id="sec" class="dsec"></span><span id="sec_text" class="dsec itlabel">секунд </span></div> ';
+            clock.innerHTML = '<div class="clockandlabel"><span id="year" class="dyear numl"></span><span id="year_text" class="dyear itlabel">лет </span></div> '                                       
+            + '<div class="clockandlabel"><span id="month" class="dmonth numl"></span><span id="month_text" class="dmonth itlabel">месяцев </span></div> '                                      
+            //+ '<div class="clockandlabel"><span id="week" class="dweek"></span><span id="week_text" class="dweek itlabel">недель </span></div> '
+            + '<div class="clockandlabel"><span id="day" class="dday numl"></span><span id="day_text" class="dday itlabel">дней </span></div> '
+            + '<div class="clockandlabel"><span id="hour" class="dhour numl"></span><span id="hour_text" class="dhour itlabel">часов </span></div> '
+            + '<div class="clockandlabel"><span id="min" class="dmin numl"></span><span id="min_text" class="dmin itlabel">   мин </span></div> '
+            + '<div class="clockandlabel"><span id="sec" class="dsec numl"></span><span id="sec_text" class="dsec itlabel">сек </span></div> ';
             
             let year = document.getElementById('year');
             let month = document.getElementById('month');
-            let week = document.getElementById('week');
+            //let week = document.getElementById('week');
             let day = document.getElementById('day');
             let hour = document.getElementById('hour');
             let min = document.getElementById('min');
@@ -41,14 +41,17 @@
             twaswere='До';
             twaswere2 = 'осталось';        
             
+            let lastday = new Date(todaytime.getFullYear(), todaytime.getMonth() + 1, 0);
+            let mend = lastday.getDate();
+            
             let timerId = setTimeout(function tick() {
                 todaytime = new Date();
                 let dt = (userdate.getTime() - todaytime.getTime());
                 sec.innerHTML = Math.floor(dt / 1000) % 60;
                 min.innerHTML = Math.floor(dt / 1000 / 60) % 60;
                 hour.innerHTML = Math.floor(dt / 1000 / 60 / 60)%24;
-                day.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24)%7;  
-                week.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24 /7)%4;
+                day.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24)%mend;  
+                //week.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24 /7)%4;
                 let mm = userdate.getMonth() - todaytime.getMonth();
                 let yyyy = userdate.getFullYear() - todaytime.getFullYear();
                 if(mm < 0){
@@ -61,7 +64,7 @@
                 
                 slicenull(year);
                 slicenull(month);
-                slicenull(week);
+                //slicenull(week);
                 slicenull(day);
                 
                 setnull(hour);
@@ -69,7 +72,7 @@
                 setnull(sec);
                 setnull(year);
                 setnull(month);
-                setnull(week);
+                //setnull(week);
                 setnull(day);
 
                 timerId = setTimeout(tick, 1000); // (*)
@@ -80,32 +83,91 @@
         else{
             twaswere='От';
             twaswere2 = 'прошло';
+            let mounthsumdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31];
+                        
+            //let lastday = new Date(userdate.getFullYear(), userdate.getMonth() + 1, 0);
+            //let mend = lastday.getDate();
             
             let timerId = setTimeout(function tick() {
+                let daybegin = parseInt(userdate.getDate());
+                let dayend = parseInt(todaytime.getDate());
+                let mounthbegin = parseInt(userdate.getMonth());
+                let mounthend = parseInt(todaytime.getMonth());
+                let yearbegin = parseInt(userdate.getFullYear());
+                let yearend = parseInt(todaytime.getFullYear());
+                
+                            
+                let yearleft = yearend - yearbegin; //лет осталось
+                let mounthleft = mounthend - mounthbegin; //месяцев осталось
+                let dayleft=0; //дней осталось
+  
+                let dd = mounthbegin-1; //месяц для массива
+                if(dd<0){
+                    dd = 0;
+                }
+                let ee = mounthend-1;
+                
                 todaytime = new Date();
                 let dt = (todaytime.getTime() - userdate.getTime());
                 sec.innerHTML = Math.floor(dt / 1000) % 60;
                 min.innerHTML = Math.floor(dt / 1000 / 60) % 60;
-                hour.innerHTML = Math.floor(dt / 1000 / 60 / 60)%24;
+                hour.innerHTML = Math.floor(dt / 1000 / 60 / 60)%24; 
                 
-                day.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24)%7;  
-                week.innerHTML = Math.floor((dt / 1000 / 60 / 60 / 24 /7)%4.3);
-                let mm = todaytime.getMonth() - userdate.getMonth();
-                let yyyy = todaytime.getFullYear() - userdate.getFullYear();
-                if(mm < 0){
-                    yyyy--;
-                    mm+=12;
+                //ост дней: часть в начале и все из конца
+                if(mounthend !== mounthbegin){
+                    dayleft = +dayend + (mounthsumdays[dd] - daybegin);
+                }
+
+                //если в одном месяце
+                else if(mounthend == mounthbegin){
+                    dayleft = +dayend - daybegin;
                 }
                 
-                month.innerHTML = mm;
-                year.innerHTML = yyyy;
-
-                timerId = setTimeout(tick, 1000); // (*)
-            }, 1000);
-            
+                //если месяцы разные
+                if(mounthend>mounthbegin){
+                    if(dayleft > mounthsumdays[ee]){
+                        dayleft = dayleft - mounthsumdays[dd];
+                    }
+                    
+                    if(daybegin>dayend){
+                        mounthleft = mounthleft - 1;
+                    }
+                }
+                
+                if(mounthend<mounthbegin){
+                    if(dayleft > mounthsumdays[ee]){
+                        dayleft = dayleft - mounthsumdays[dd];
+                    }
+                    if(daybegin<dayend){
+                        mounthleft = mounthleft + 1;
+                    }
+                }
+                
+                //если года разные
+                if(yearend > yearbegin){
+                    if(mounthend < mounthbegin){
+                        yearleft = yearleft -1;
+                        mounthleft+=11;
+                    }
+                    if(mounthend == mounthbegin && dayend<daybegin){
+                        yearleft = yearleft -1;
+                        mounthleft+=11;
+                    }
+                    
+                    if(dayleft<0){
+                        dayleft = dayleft + mounthsumdays[dd];
+                    }
+                }
+                
+                dayleft = dayleft - 1;
+                
+                day.innerHTML = dayleft;
+                month.innerHTML = mounthleft;
+                year.innerHTML = yearleft;
+                
             slicenull(year);
             slicenull(month);
-            slicenull(week);
+            //slicenull(week);
             slicenull(day);
             
             setnull(hour);
@@ -113,8 +175,13 @@
             setnull(sec);
             setnull(year);
             setnull(month);
-            setnull(week);
+            //setnull(week);
             setnull(day);
+
+                
+                timerId = setTimeout(tick, 1000); // (*)
+            }, 1000);
+        
         }
         
         namehere.innerHTML = twaswere + ' ' + timerhere.getAttribute('attname') + ' ' + twaswere2;
@@ -123,7 +190,8 @@
         function slicenull(a){
             let thisclass = a.classList[0];
             let tohide = document.getElementsByTagName('span');
-            if(a.textContent == '0' || a.textContent == '00' || a.textContent.indexOf('-') == 0){
+            console.log(a);
+            if(a.textContent == '0' || a.innerHTML == '0' || a.textContent == '00' || a.textContent.indexOf('-') == 0){
                 for(let i=0; i<tohide.length; i++){
                     if(tohide[i].classList.contains(thisclass)){
                         tohide[i].style.display = 'none';
@@ -144,7 +212,7 @@
         }
         
         function setnull(a){
-            if(a.textContent.toString().length == 1){
+            if(a.innerHTML.toString().length == 1){
                 a.textContent = '0' + a.textContent;
             }
         }

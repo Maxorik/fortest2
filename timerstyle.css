@@ -37,6 +37,16 @@
     margin-left: 20px;
 }
 
+.clockandlabel:first-child{
+ margin-left: 0px;
+}
+
+.numl{
+    border: 2px solid #d4dee4;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
 .itlabel{
     font-size: 4vw;
     text-align: center;
