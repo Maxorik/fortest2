@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>test_table</title>
+    <link rel='stylesheet' href='timerstyle.css'>
+</head>
+<body>
+    <div attdate='2018/1/1' attname='начала 2018 года' atttable='yes' id='timerhere'>
+        <div id='namehere'></div>
+        <div id="clock"></div>
+        <div id='texthere'></div>
+        <div id='table'></div>
+    </div>
+
+    <script type="text/javascript">
+        
+        let date = timerhere.getAttribute('attdate');
+        let twaswere='', twaswere2='';
+        let todaytime = new Date();
+        let userdate = date.split('/');
+        userdate = new Date(userdate[0], userdate[1]-1, userdate[2]);
+        
+        let m, w, d, H,  S, Y;
+            clock.innerHTML = '<div class="clockandlabel"><span id="year" class="dyear"></span><span id="year_text" class="dyear itlabel">лет </span></div> '                                       
+            + '<div class="clockandlabel"><span id="month" class="dmonth"></span><span id="month_text" class="dmonth itlabel">месяцев </span></div> '                                      
+            + '<div class="clockandlabel"><span id="week" class="dweek"></span><span id="week_text" class="dweek itlabel">недель </span></div> '
+            + '<div class="clockandlabel"><span id="day" class="dday"></span><span id="day_text" class="dday itlabel">дней </span></div> '
+            + '<div class="clockandlabel"><span id="hour" class="dhour"></span><span id="hour_text" class="dhour itlabel">часов </span></div> '
+            + '<div class="clockandlabel"><span id="min" class="dmin"></span><span id="min_text" class="dmin itlabel">   минут </span></div> '
+            + '<div class="clockandlabel"><span id="sec" class="dsec"></span><span id="sec_text" class="dsec itlabel">секунд </span></div> ';
+            
+            let year = document.getElementById('year');
+            let month = document.getElementById('month');
+            let week = document.getElementById('week');
+            let day = document.getElementById('day');
+            let hour = document.getElementById('hour');
+            let min = document.getElementById('min');
+            let sec = document.getElementById('sec');
+
+        if(todaytime<=userdate){
+            twaswere='До';
+            twaswere2 = 'осталось';        
+            
+            let timerId = setTimeout(function tick() {
+                todaytime = new Date();
+                let dt = (userdate.getTime() - todaytime.getTime());
+                sec.innerHTML = Math.floor(dt / 1000) % 60;
+                min.innerHTML = Math.floor(dt / 1000 / 60) % 60;
+                hour.innerHTML = Math.floor(dt / 1000 / 60 / 60)%24;
+                day.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24)%7;  
+                week.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24 /7)%4;
+                let mm = userdate.getMonth() - todaytime.getMonth();
+                let yyyy = userdate.getFullYear() - todaytime.getFullYear();
+                if(mm < 0){
+                    yyyy--;
+                    mm+=11;
+                }
+                
+                month.innerHTML = mm;
+                year.innerHTML = yyyy;
+                
+                slicenull(year);
+                slicenull(month);
+                slicenull(week);
+                slicenull(day);
+                
+                setnull(hour);
+                setnull(min);
+                setnull(sec);
+                setnull(year);
+                setnull(month);
+                setnull(week);
+                setnull(day);
+
+                timerId = setTimeout(tick, 1000); // (*)
+            }, 1000);
+                        
+        }
+        
+        else{
+            twaswere='От';
+            twaswere2 = 'прошло';
+            
+            let timerId = setTimeout(function tick() {
+                todaytime = new Date();
+                let dt = (todaytime.getTime() - userdate.getTime());
+                sec.innerHTML = Math.floor(dt / 1000) % 60;
+                min.innerHTML = Math.floor(dt / 1000 / 60) % 60;
+                hour.innerHTML = Math.floor(dt / 1000 / 60 / 60)%24;
+                
+                day.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24)%7;  
+                week.innerHTML = Math.floor((dt / 1000 / 60 / 60 / 24 /7)%4.3);
+                let mm = todaytime.getMonth() - userdate.getMonth();
+                let yyyy = todaytime.getFullYear() - userdate.getFullYear();
+                if(mm < 0){
+                    yyyy--;
+                    mm+=12;
+                }
+                
+                month.innerHTML = mm;
+                year.innerHTML = yyyy;
+
+                timerId = setTimeout(tick, 1000); // (*)
+            }, 1000);
+            
+            slicenull(year);
+            slicenull(month);
+            slicenull(week);
+            slicenull(day);
+            
+            setnull(hour);
+            setnull(min);
+            setnull(sec);
+            setnull(year);
+            setnull(month);
+            setnull(week);
+            setnull(day);
+        }
+        
+        namehere.innerHTML = twaswere + ' ' + timerhere.getAttribute('attname') + ' ' + twaswere2;
+        
+        
+        function slicenull(a){
+            let thisclass = a.classList[0];
+            let tohide = document.getElementsByTagName('span');
+            if(a.textContent == '0' || a.textContent == '00' || a.textContent.indexOf('-') == 0){
+                for(let i=0; i<tohide.length; i++){
+                    if(tohide[i].classList.contains(thisclass)){
+                        tohide[i].style.display = 'none';
+                    }
+                }
+                a.style.display = 'none';
+                //a.nextElementSibling.style.display = 'none';
+            }
+            else{
+                for(let i=0; i<tohide.length; i++){
+                    if(tohide[i].classList.contains(thisclass)){
+                        tohide[i].style.display = 'inline-block';
+                    }
+                }
+                a.style.display = 'inline-block';
+                //a.nextElementSibling.style.display = 'inline-block';
+            }
+        }
+        
+        function setnull(a){
+            if(a.textContent.toString().length == 1){
+                a.textContent = '0' + a.textContent;
+            }
+        }
+    
+        
+</script>
+</body>   
+</html> 
