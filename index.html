@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='timerstyle.css'>
 </head>
 <body>
-    <div attdate='2019/1/1' attname='начала года' atttable='yes' id='timerhere'>
+    <div attdate='1734/1/1' attname='1734/1/1' atttable='yes' id='timerhere'>
         <div id='namehere'></div>
         <div id="clock"></div>
         <div id='texthere'></div>
@@ -23,13 +23,14 @@
         let dotable = timerhere.getAttribute('atttable');
         
         if(dotable == 'yes'){
-            table.innerHTML = '<div id="washere"></div>'
+            table.innerHTML = '<div class="middle">'+'<div id="washere"></div>'
             +'<div class="clockandlabelt"><span id="year_textt" class="dyeart itlabelt">Лет </span><span id="yeart" class="dyeart numlt"></span></div> '                                       
-            + '<div class="clockandlabelt"><span id="month_textt" class="dmontht itlabelt">Месяцев </span><span id="montht" class="dmontht numlt"></span></div> '                                      
+            + '<div class="clockandlabelt"><span id="month_textt" class="dmontht itlabelt">Месяцев </span><span id="montht" class="dmontht numlt"></span></div> '
+            + '<div class="clockandlabelt"><span id="week_textt" class="dweek itlabelt">Недель </span><span id="weekt" class="dweekt numlt"></span></div> '                                      
             + '<div class="clockandlabelt"><span id="day_textt" class="ddayt itlabelt">Дней </span><span id="dayt" class="ddayt numlt"></span></div> '
             + '<div class="clockandlabelt"><span id="hour_textt" class="dhourt itlabelt">Часов </span><span id="hourt" class="dhourt numlt"></span></div> '
             + '<div class="clockandlabelt"><span id="min_textt" class="dmint itlabelt">Минут </span><span id="mint" class="dmint numlt"></span></div> '
-            + '<div class="clockandlabelt"><span id="sec_textt" class="dsec itlabelt">Секунд </span><span id="sect" class="dsec numlt"></span></div> ';}
+            + '<div class="clockandlabelt"><span id="sec_textt" class="dsec itlabelt">Секунд </span><span id="sect" class="dsec numlt"></span></div> '+'</div>';}
         
         let m, w, d, H,  S, Y;
             clock.innerHTML = '<div class="clockandlabel"><span id="year" class="dyear numl"></span><span id="year_text" class="dyear itlabel">лет </span></div> '                                       
@@ -238,13 +239,15 @@
         function gettable(datemin, datemax){           
             washere.innerHTML = twaswere2[0].toUpperCase() + twaswere2.slice(1) + ' времени';
             
-            yeart.innerHTML = datemax.getFullYear() - datemin.getFullYear;
+            yeart.innerHTML = datemax.getFullYear() - datemin.getFullYear();
             let dt = (datemax.getTime() - datemin.getTime());
                 sect.innerHTML = Math.floor(dt / 1000);
                 mint.innerHTML = Math.floor(dt / 1000 / 60);
                 hourt.innerHTML = Math.floor(dt / 1000 / 60 / 60);
                 dayt.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24);  
                 montht.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24 /30);
+                weekt.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24 /7);
+            console.log()
                 
                 let position = document.getElementsByClassName('numlt');
                 for(let i=0; i<position.length; i++){
