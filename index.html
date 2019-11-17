@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='timerstyle.css'>
 </head>
 <body>
-    <div attdate='2020/1/1' attname='Нового года' atttable='yes' id='timerhere'>
+    <div attdate='2019/1/1' attname='начала года' atttable='yes' id='timerhere'>
         <div id='namehere'></div>
         <div id="clock"></div>
         <div id='texthere'></div>
@@ -20,9 +20,20 @@
         let userdate = date.split('/');
         userdate = new Date(userdate[0], userdate[1]-1, userdate[2]);
         
+        let dotable = timerhere.getAttribute('atttable');
+        
+        if(dotable == 'yes'){
+            table.innerHTML = '<div id="washere"></div>'
+            +'<div class="clockandlabelt"><span id="year_textt" class="dyeart itlabelt">Лет </span><span id="yeart" class="dyeart numlt"></span></div> '                                       
+            + '<div class="clockandlabelt"><span id="month_textt" class="dmontht itlabelt">Месяцев </span><span id="montht" class="dmontht numlt"></span></div> '                                      
+            + '<div class="clockandlabelt"><span id="day_textt" class="ddayt itlabelt">Дней </span><span id="dayt" class="ddayt numlt"></span></div> '
+            + '<div class="clockandlabelt"><span id="hour_textt" class="dhourt itlabelt">Часов </span><span id="hourt" class="dhourt numlt"></span></div> '
+            + '<div class="clockandlabelt"><span id="min_textt" class="dmint itlabelt">Минут </span><span id="mint" class="dmint numlt"></span></div> '
+            + '<div class="clockandlabelt"><span id="sec_textt" class="dsec itlabelt">Секунд </span><span id="sect" class="dsec numlt"></span></div> ';}
+        
         let m, w, d, H,  S, Y;
             clock.innerHTML = '<div class="clockandlabel"><span id="year" class="dyear numl"></span><span id="year_text" class="dyear itlabel">лет </span></div> '                                       
-            + '<div class="clockandlabel"><span id="month" class="dmonth numl"></span><span id="month_text" class="dmonth itlabel">месяцев </span></div> '                                      
+            + '<div class="clockandlabel"><span id="month" class="dmonth numl"></span><span id="month_text" class="dmonth itlabel">мес </span></div> '                                      
             //+ '<div class="clockandlabel"><span id="week" class="dweek"></span><span id="week_text" class="dweek itlabel">недель </span></div> '
             + '<div class="clockandlabel"><span id="day" class="dday numl"></span><span id="day_text" class="dday itlabel">дней </span></div> '
             + '<div class="clockandlabel"><span id="hour" class="dhour numl"></span><span id="hour_text" class="dhour itlabel">часов </span></div> '
@@ -74,6 +85,10 @@
                 setnull(month);
                 //setnull(week);
                 setnull(day);
+                
+                if(dotable == 'yes'){
+                    gettable(todaytime, userdate);
+                }
 
                 timerId = setTimeout(tick, 1000); // (*)
             }, 1000);
@@ -159,7 +174,7 @@
                     }
                 }
                 
-                dayleft = dayleft - 1;
+                //dayleft = dayleft - 1;
                 
                 day.innerHTML = dayleft;
                 month.innerHTML = mounthleft;
@@ -177,7 +192,10 @@
             setnull(month);
             //setnull(week);
             setnull(day);
-
+                
+                if(dotable == 'yes'){
+                     gettable(userdate, todaytime);
+                }
                 
                 timerId = setTimeout(tick, 1000); // (*)
             }, 1000);
@@ -190,7 +208,6 @@
         function slicenull(a){
             let thisclass = a.classList[0];
             let tohide = document.getElementsByTagName('span');
-            console.log(a);
             if(a.textContent == '0' || a.innerHTML == '0' || a.textContent == '00' || a.textContent.indexOf('-') == 0){
                 for(let i=0; i<tohide.length; i++){
                     if(tohide[i].classList.contains(thisclass)){
@@ -216,7 +233,34 @@
                 a.textContent = '0' + a.textContent;
             }
         }
-    
+        
+        
+        function gettable(datemin, datemax){           
+            washere.innerHTML = twaswere2[0].toUpperCase() + twaswere2.slice(1) + ' времени';
+            
+            yeart.innerHTML = datemax.getFullYear() - datemin.getFullYear;
+            let dt = (datemax.getTime() - datemin.getTime());
+                sect.innerHTML = Math.floor(dt / 1000);
+                mint.innerHTML = Math.floor(dt / 1000 / 60);
+                hourt.innerHTML = Math.floor(dt / 1000 / 60 / 60);
+                dayt.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24);  
+                montht.innerHTML = Math.floor(dt / 1000 / 60 / 60 / 24 /30);
+                
+                let position = document.getElementsByClassName('numlt');
+                for(let i=0; i<position.length; i++){
+                    if(position[i].textContent == 'NaN' || position[i].textContent == ''){
+                        position[i].style.display = 'none';
+                        position[i].previousElementSibling.style.display = 'none';
+                    }
+                    else{
+                        position[i].style.display = 'inline-block';
+                        position[i].previousElementSibling.style.display = 'inline-block';
+                    }
+                }
+            
+            }
+        
+        
         
 </script>
 </body>   
