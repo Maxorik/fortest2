@@ -3,7 +3,6 @@
 .ultime { width:800px; margin:0 auto; padding:0px; list-style:none; text-align:center; }
 .ultime .timepart { display:inline; font-size:10em; text-align:center; font-family:Arial, Helvetica, sans-serif; text-shadow:0 0 5px #00c6ff; }
 
-#point { position:relative; -moz-animation:mymove 1s ease infinite; -webkit-animation:mymove 1s ease infinite; padding-left:10px; padding-right:10px; }
 
 @-webkit-keyframes mymove 
 {
@@ -30,8 +29,28 @@
     cursor: pointer;
     font-weight: 500;
     border-radius: 10px;
+    color:beige;
 }
 
 #nostbtn:hover{
     background-color: #4682B4;
+}
+
+#timename{
+    max-width: 5em;
+    font-size: 1.8em;
+    padding: 5px 40px;
+    border-radius: 10px;
+    border: 1px solid #4682B4;
+}
+
+#timename::placeholder{
+    color:#00c6ff;
+}
+
+.mid{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

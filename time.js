@@ -1,4 +1,14 @@
-﻿let time = timecontainer.getAttribute('atttime');
+﻿timecontainer.innerHTML = "<ul class='ultime'>"
+	                    + "<li id='h1' class='timepart'></li>"
+                        + "<li id='m1' class='timepart'></li>"
+                        + "<li id='point' class='timepart'>:</li>"
+                        + "<li id='h2' class='timepart'></li>"
+                        + "<li id='m2' class='timepart'></li></ul>"
+                        + "<div class='mid'><input type='text' placeholder='Ваше имя' id='timename'>"
+                        + "<div id='nostbtn'>Отсчет</div></div>"
+                        +"<div id='texthere'></div>";
+
+let time = timecontainer.getAttribute('atttime');
 time = time.split(':');
     h1.innerHTML = time[0].charAt(0);
     m1.innerHTML = time[0].charAt(1);
