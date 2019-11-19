@@ -43,27 +43,27 @@ ul li { display:inline; font-size:10em; text-align:center; font-family:Arial, He
 }
 
 </style>
-    <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript">
-$(document).ready(function() {
+window.onload = function() {
 
 var newDate = new Date();
 var randomDate = new Date();
 randomDate.setFullYear(newDate.getFullYear()+100);
     
 newDate.setDate(newDate.getDate());  
+    
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 	
 setInterval( function() {
-	var minutes = parseInt(new Date().getMilliseconds()/31+28);
-	$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
-    },10);
-	
-setInterval( function() {
-	var hours = parseInt(new Date().getMilliseconds()/22 + 11);
-	$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+	h1.innerHTML = getRandomInt(3);
+    m1.innerHTML = getRandomInt(9);
+    h2.innerHTML = getRandomInt(3);
+    m2.innerHTML = getRandomInt(9);
     }, 10);
 	
-}); 
+} 
 </script>
 </head>
 <body>
@@ -71,9 +71,11 @@ setInterval( function() {
 
 <div class="clock">
     <ul>
-	    <li id="hours"></li>
+	    <li id="h1"></li>
+        <li id="m1"></li>
         <li id="point">:</li>
-        <li id="min"></li>
+        <li id="h2"></li>
+        <li id="m2"></li>
     </ul>
 </div>
 
