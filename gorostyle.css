@@ -1,0 +1,73 @@
+﻿#todayNav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dateContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    font-family: sans-serif;
+}
+
+.nav{
+    background-color: #373737;
+    color:beige;
+    margin-left: 5px;
+    font-size: 1.7em;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.nav:hover{
+    background-color: #4682B4;
+}
+
+.chosen{
+    background-color: #4682B4;
+}
+
+#userdate{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.inpgoro{
+    height: 3em;
+    font-size: 1em;
+    font-family: "Open Sans",sans-serif;
+    padding: 0 2%;
+    width:5%;
+    margin-left: 4px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #4682B4;
+}
+
+.border_warning{
+    border: 1px solid red;
+}
+
+.goroh1{
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.bbl{
+    border: 1px solid #4682B4;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 980px){
+  
+}
+
