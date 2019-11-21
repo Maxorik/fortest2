@@ -131,7 +131,7 @@ function setgoro(event){
                             + '<br /> Ваш знак зодиака: ' + getzodiak(ddgoro.value, mmgoro.value)
                             + '<br /> Восточный год: ' + getmoonyear(yygoro.value, mmgoro.value-1, ddgoro.value)+'</span>';
     
-    gororesult.innerHTML = 'Гороскоп на ' + gorodate + ': ';
+    gororesult.innerHTML = '<span class="bbl">'+'Гороскоп на ' + gorodate + ': ..............'+'</span>';
     //readTextFile('http://boguslava.ru/goroskop/'+ gorotype +'/' + result +'.txt');
     
 }
