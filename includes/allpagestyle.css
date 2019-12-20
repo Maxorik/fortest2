@@ -1,0 +1,326 @@
+﻿
+#timerhere{
+    background-color: #5a707d; /*цвет фона */
+    color: #d4dee4; /*цвет текста */
+    width: 100%;                        /*если тема поменялась и посередине стало меньше места - поставить 80%*/
+    margin: 0;
+    padding: 0;
+    padding-top: 15px;
+}
+
+#namehere, #clock{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#namehere{
+    font-size: 2em;
+    font-weight: bolder;
+    font-family: cursive;
+    text-align: center;
+    margin: 25px 0;
+}
+
+
+
+
+.clockandlabel{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: bolder;
+    margin-left: 5px;
+}
+
+.clockandlabel:first-child{
+ margin-left: 0px;
+}
+
+
+/*Ячейки с цифрами numl
+
+Добавить фон: background-color: цвет;
+Изсенить цвет шрифта^ color: цвет;
+
+*/
+
+.numl{
+    border: 2px solid #d4dee4; /*рамка вокргу цифр*/
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.itlabel{
+    font-size: 0.5em;
+    text-align: center;
+}
+
+#sec, #sect{
+    color:Salmon;
+}
+
+#washere{
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+#table{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    
+}
+
+.middle{
+    width:40%;
+    padding: 10px 0px;
+    text-align: center;
+    border: 2px solid #d4dee4; /*рамка вокруг таблицы*/
+    border-radius: 10px;
+    margin: auto;
+}
+
+                            /*таблица*/
+.clockandlabelt{
+    margin: 0 auto;
+    padding: 0 12%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;          /*жирность текста (максимум)*/
+    font-size: 1.2em;           /*размер шрифта*/
+    
+}
+
+
+
+.itlabelt, .numlt{
+    font-size: 1em;
+}
+
+@media screen and (max-width: 980px){
+    #namehere{
+        font-size: 1.3em;
+    }
+    .clockandlabel{
+        font-size: 0.7em;
+        margin-left: 2px;
+    }
+    
+    .numl{
+        padding: 10px;
+        font-size: 2em;
+    }
+    
+    .itlabel{
+        font-size: 1em !important;
+    }
+    
+    .middle{
+        width:70%;
+    }
+    
+    
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+.chosenbio{
+    background-color: #4682B4;
+}
+
+#userdatebio{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.inpbio{
+    height: 3em;
+    font-size: 1em;
+    font-family: "Open Sans",sans-serif;
+    padding: 0 2%;
+    width:9%;
+    margin-left: 4px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #4682B4;
+}
+
+.border_warning{
+    border: 1px solid red;
+}
+
+.bioh1{
+    text-align: center;
+    font-size: 1.5em !important;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.biobtn:hover, .resetbtn:hover{
+    background-color: gray;
+}
+
+.biobtn{
+    background-color: #4682B4;
+    color:beige;
+    width:25%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 1.7em;
+    padding: 5px 0;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.resetbtn{
+    background-color: green;
+    color:beige;
+    width:49%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-size: 1.7em;
+    padding: 5px 0;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.bbl{
+    border: 3px solid #4682B4;
+    border-radius: 10px;
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+#datecontentbio{
+    font-family: sans-serif;
+    margin: 0 auto;
+    margin-top: 15px;
+    font-size: 0.9em;
+    width: 26%;
+}
+
+#graphic{
+    height:400px;
+}
+
+.legend{
+    font-size: 1em;
+    margin-left: 10px;
+}
+
+.hideit{
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#biotablehere{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px solid #4682B4;
+    width: 60%;
+}
+
+#biotablehere tr, #biotablehere td{
+    border: 1px solid #4682B4;
+    padding: 2px;
+    text-align: center;
+}
+
+.mtopbio{
+    margin-top: 20px;
+}
+
+.hlight{
+    background-color: burlywood;
+}
+
+.btnspot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:28%;
+    margin: auto;
+}
+
+@media screen and (max-width: 980px){
+    #datecontentbio{
+        width:78%;
+    }
+    
+    .biobtn{
+        width:85%;
+    }
+    
+    .inpbio{
+        width:28%;
+    }
+    
+    .bioh1{
+        font-size: 1.3em !important;
+    }
+    
+    .legend{
+        font-size: 0.8em !important;
+        margin-left: 1px !important;
+    }
+    
+    #biotablehere{
+        font-size: 0.8em;
+    }
+    
+    
+}
+
+@media screen and (max-width: 500px){
+    #chart{
+        width:109vw !important;
+        margin-left: -14vw !important;
+        padding-left: 0;
+    }
+    
+    .btnspot{
+        width:86%;
+    }
+    
+    .biobtn, .resetbtn:hover{
+        width:45%;
+    }
+}
+
+i {
+    color:blueviolet;
+}
+
+b{
+    color:darkred;
+}
+
+.btnmiddle a{
+    text-decoration: none;
+    color: beige;
+}
+
+.btnmiddle{
+    margin: 10px auto;
+    font-size: 1em;
+    border-radius: 10px;
+    padding: 10px;
+}
