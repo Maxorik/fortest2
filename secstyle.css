@@ -1,0 +1,58 @@
+﻿#stopwatch{
+    width:50%;
+    margin: auto;
+}
+
+.swtime{
+    display: flex;
+    font-size: 5em;
+    color: #003267;
+    justify-content: center;
+    padding: 5px;
+}
+
+.swinterface{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.swbtn{
+    background-color: #003267;
+    color:beige;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 2em;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.swbtn:hover{
+    background-color: #28a745;
+}
+
+.swpause{
+    display: none;
+}
+
+.swclock{
+    text-align: center;
+    background-color: #003267;
+    opacity: 0.7;
+    border-radius: 10px;
+    padding: 15px;
+    color:beige;
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.swdate{
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 40%;
+    font-weight: 300;
+}
+
+.swms{
+    width:20%;
+}
