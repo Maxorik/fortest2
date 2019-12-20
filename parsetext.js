@@ -2,7 +2,7 @@
 
     let allmonth = ['yanvarya', 'fevralya', 'marta', 'aprelya', 'maya', 'iyunya', 'iyulya', 'avgusta', 'sentyabrya', 'oktyabrya', 'noyabrya', 'dekabrya'];
 
-    let thisdate = new Date(2019, 11, 18);
+    let thisdate = new Date(2019, 11, 30);
     let weekdays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг','Пятница','Суббота'];
     let options = {
         year: 'numeric',
@@ -11,21 +11,23 @@
         timezone: 'UTC'
     };
     let alldata = '';
+    let arryear = [];
+    yearforyou();
     
     function zodiak(d, m){
         m++;
-        if (m==1 && d>=21 || m==2 && d<=19) return "Водолей (21.01 - 19.02)";
-        else if (m==2 && d>=20 || m==3 && d<=20) return "Рыбы (20.02 - 20.03)";
-        else if (m==3 && d>=21 || m==4 && d<=20) return "Овен (21.03 - 20.04)";
-        else if (m==4 && d>=21 || m==5 && d<=21) return "Телец (21.04 - 21.05)";
-        else if (m==5 && d>=22 || m==6 && d<=21) return "Близнецы (22.05 - 21.06)";
-        else if (m==6 && d>=22 || m==7 && d<=22) return "Рак (22.06 - 22.07)";
-        else if (m==7 && d>=23 || m==8 && d<=21) return "Лев (23.07 - 21.08)";
-        else if (m==8 && d>=22 || m==9 && d<=23) return "Дева (22.08 - 23.09)";
-        else if (m==9 && d>=24 || m==10 && d<=23) return "Весы (24.09 - 23.10)";
-        else if (m==10 && d>=24 || m==11 && d<=22) return "Скорпион (24.10 - 22.11)";
-        else if (m==11 && d>=23 || m==12 && d<=22) return "Стрелец (23.11 - 22.12)";
-        else if (m==12 && d>=22 || m==1 && d<=20) return "Козерог (22.12 - 20.01)";
+        if (m==1 && d>=21 || m==2 && d<=19) return "Водолей, действует с 21 января по 19 февраля";
+        else if (m==2 && d>=20 || m==3 && d<=20) return "Рыбы, действует с 20 февраля по 20 марта";
+        else if (m==3 && d>=21 || m==4 && d<=20) return "Овен, действует с 21 марта по 20 апреля";
+        else if (m==4 && d>=21 || m==5 && d<=21) return "Телец, действует с 21 апреля по 21 мая";
+        else if (m==5 && d>=22 || m==6 && d<=21) return "Близнецы, действует с 22 мая по 21 июня";
+        else if (m==6 && d>=22 || m==7 && d<=22) return "Рак, действует с 22 июня по 22 июля";
+        else if (m==7 && d>=23 || m==8 && d<=21) return "Лев, действует с 23 июля по 21 августа";
+        else if (m==8 && d>=22 || m==9 && d<=23) return "Дева, действует с 22 августа по 23 сентября";
+        else if (m==9 && d>=24 || m==10 && d<=23) return "Весы, действует с 24 сентября по 23 октября";
+        else if (m==10 && d>=24 || m==11 && d<=22) return "Скорпион, действует с 24 октября по 22 ноября";
+        else if (m==11 && d>=23 || m==12 && d<=22) return "Стрелец, действует с 23 ноября по 22 декабря";
+        else if (m==12 && d>=22 || m==1 && d<=20) return "Козерог, действует с 22 декабря по 20 января";
     }
     function zodiakSlav(d, m){
         m++;
@@ -130,7 +132,7 @@
             endinterval.setDate(endinterval.getDate() + 10);
             if(date >= startinterval && date<endinterval){
                 ////////////////////////////////// ВЫВОД ТЕКСТА ДОБАВИТЬ///////////////////////////////////////////
-                return('текст из файла......');
+                return(' <i>ТЕКСТ ИЗ ФАЙЛА</i> ');
                 break;
             }
             else{
@@ -153,6 +155,22 @@
         else if (m==9 && d>=30 || m==10 && d<=27) return "Опал (с 30 сентября по 27 октября) ";
         else if (m==10 && d>=28 || m==11 && d<=24) return "Яшма (с 28 октября по 24 ноября)";
         else if (m==11 && d>=25 || m==12 && d<=23) return "Ляпис-лазурь (с 25 ноября по 23 декабря)";
+    }
+    function druidAnimal(d, m){
+        m++;
+        if (m==12 && d>=24 || m==1 && d<=20) return "Олень (с 24 декабря по 20 января) – рожденные под этим знаком любят путешествовать и узнавать что-то новое. Они горды и благородны.";
+        else if (m==1 && d>=21 || m==2 && d<=17) return "Журавль (с 21 января по 17 февраля) – гармонично развитые люди, обладающие множеством талантов и способностей. Могут найти свое призвание как в творчестве, так и научной деятельности.";
+        else if (m==2 && d>=18 || m==3 && d<=17) return "Тюлень (с 18 февраля по 17 марта) – эти люди постоянно стремятся к совершенству. Они хотят изменить мир к лучшему, ими движут высокие цели и утопические мечты.";
+        else if (m==3 && d>=18 || m==4 && d<=14) return "Медведь (с 18 марта по 14 апреля) – физически сильные, волевые и уверенные в себе люди. Ценят семью и дружбу, предпочитают стабильность, нежели что-то новое, неизвестное им.";
+        else if (m==4 && d>=15 || m==5 && d<=12) return "Змея (с 15 апреля по 12 мая) – это люди-изобретатели. Обладают целительскими способностями, мудростью и рассудительностью.";
+        else if (m==5 && d>=13 || m==6 && d<=9) return "Пчела (с 13 мая по 9 июня) – творческие личности, очень энергичные и любознательные. Часто занимают руководящие должности и имеют авторитет в обществе.";
+        else if (m==6 && d>=10 || m==6 && d<=7) return "Выдра (с 10 июня по 7 июля) – отличаются широким кругозором и неординарным мышлением. Всегда на позитиве, любят перемены и путешествия.";
+        else if (m==7 && d>=8 || m==8 && d<=4) return "Кот (с 8 июля по 4 августа) – честные, преданные и талантливые. Их не волнует общественное мнение и чужие не прошеные советы. Они идут свое дорогой.";
+        else if (m==8 && d>=5 || m==9 && d<=1) return "Лосось (с 5 августа по 1 сентября) – проницательные и внимательные натуры. Быстро поднимаются по карьерной лестнице в силу своего упорного характера.";
+        else if (m==9 && d>=2 || m==9 && d<=29) return "Лебедь (со 2 по 29 сентября) – спокойные, чувствительные и добрые люди. Верные, преданные и честные.";
+        else if (m==9 && d>=30 || m==10 && d<=27) return "Гусь (с 30 сентября по 27 октября) – обладают острым умом и хорошим чувством юмора. Часто находят себя в творчестве и искусстве.";
+        else if (m==10 && d>=28 || m==11 && d<=24) return "Сова (с 28 октября по 24 ноября) – эмоциональные и страстные натуры. Не по годам мудры и умны. Притягивают к себе людей, особенно представителей противоположного пола.";
+        else if (m==11 && d>=25 || m==12 && d<=23) return "Ворон (с 25 ноября по 23 декабря) – расчетливые, практичные и иногда коварные особы, которые ищут во всем выгоду. Есть предрасположенность к магии и экстрасенсорике.";
     }
     function getmoonyear(y, m, d){
         let ind = +y - 1900;
@@ -396,10 +414,10 @@
     function isworkday(date){
         let d = date.getDay();
         if(d == 0 || d == 6){
-            return 'Нерабочий день';
+            return 'нерабочий день';
         }
         else{
-            return 'Рабочий день';
+            return 'рабочий день';
         }
     }
     function dayinmonth(date){
@@ -426,12 +444,20 @@
         let d2 = new Date(date.getFullYear(), 2, 1);
         let res = Math.round((d2 - d1) / 1000 / 3600 / 24);
         if(res == 29){
-            return '366, високосный год';
+            return ' високосный год по григорианскому календарю, в нем 366 дней, в нем прибавился лишний день 29 февраля';
         }
-        else return '365, не високосный год';
+        else return ' это не високосный год по григорианскому календарю, в нем 365 дней, 29 февраля в этом году нет';
     }
     function toOne(date, tog){
-        let arr = [parseInt(date.getDate()), parseInt(date.getMonth()+1), parseInt(date.getFullYear())];        
+        let arr;
+        if(date.toString().length>4){
+            arr = [parseInt(date.getDate()), parseInt(date.getMonth()+1), parseInt(date.getFullYear())];  
+        }
+        else{
+            date+='';
+            //arr = date.split('');
+            arr=[date];
+        }      
     let togg = tog;
     if(togg == 'null' || togg==null){
         togg = 0;
@@ -739,18 +765,51 @@
             return('Седьмой Ангел - Хранитель Варахиил – "благословение Божие". Задача которого посылать на землю благословения от Господа на всякое доброе дело и занятие житейское.')
         }
     }
-    function rand3dates(){
+    function rand3dates(h){
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
         }
         
         let monthRU = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+        let str = [];
+        for(let i=0; i<h; i++){
+            let d1 = new Date(); 
+            d1.setDate(d1.getDate() + getRandomInt(365)); 
+            d1 = d1.getDate() + ' ' + monthRU[d1.getMonth()] + ',';
+            if(str.indexOf(d1)<0){
+                str.push(d1);
+            }
+            else{i--;}
+        }
+        str = str.join(' ');
+        str = str.slice(0, str.length-1);
+        return str;
+    }
+    function randclock(){
+        let hh1 = Math.floor(Math.random() * Math.floor(23));
+        let mm1 = Math.floor(Math.random() * Math.floor(59));
+        let hh2 = Math.floor(Math.random() * Math.floor(23));
+        let mm2 = Math.floor(Math.random() * Math.floor(59));
+        let str = 'с ' + hh1 + ':' + mm1 + ' до ' + hh2 + ':' + mm2;
+            return str;
+    }
+
+    function randweeks(h){
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+        let weekdays1 = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг','Пятница','Суббота'];
+        let str = [];
+        for(let i=0; i<h; i++){
+            let w = weekdays1[getRandomInt(7)];
+            if(str.indexOf(w)<0){
+                str.push(w);
+            }
+            else{i--;}
+        }
+        str = str.join(', ');
+        return str;
         
-        let d1 = new Date(); d1.setDate(d1.getDate() + getRandomInt(365)); d1 = ' ' + d1.getDate() + ' ' + monthRU[d1.getMonth()]+ ', ';
-        let d2 = new Date(); d2.setDate(d2.getDate() + getRandomInt(365)); d2 = ' ' + d2.getDate() + ' ' + monthRU[d2.getMonth()]+ ', ';
-        let d3 = new Date(); d3.setDate(d3.getDate() + getRandomInt(365)); d3 = ' ' + d3.getDate() + ' ' + monthRU[d3.getMonth()];
-        
-        return d1 + d2 + d3;
     }
     function icon(d, m){
         m++;
@@ -782,7 +841,94 @@
         else if (m==11 && d>=23 || m==12 && d<=22) return "Умеренность - Ваша карта Умеренность. Вы – одарённый, талантливый посредник, сможете найти общий язык со всеми, точки соприкосновения, с помощью вашего сбалансированного суждения, с подлинным пониманием и осознанием сути вещей. Словно извилистый ручеёк, вы прокладываете себе путь через все трудности и невзгоды в вашей жизни.";
         else if (m==12 && d>=22 || m==1 && d<=20) return "Дьявол - Карта Таро Дьявол призывает вас столкнуться с вашей теневой стороной личности для того, чтобы собрать знания, необходимые для духовной трансформации. Эта карта советует вам задуматься о любом негативе, который заставляет вас сомневаться в себе, поменять сомнения на уверенность и крепко хранить своё высочайшее видение того, кто вы есть на самом деле и что вам нужно от жизни.";
     }
-  
+    function transform(date){
+        return ''+ date.getFullYear() + '/' + (date.getMonth()+1) + '/' + date.getDate();
+    }
+    function getrumonth(mm, small){
+        let month = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+        let month1 = ["январе","феврале","марте","апреле","мае","июне","июле","августе","сентябре","октябре","ноябре","декабре"];
+        if(small){
+            return month1[mm];
+        }
+        else return month[mm];
+    }
+    function waswhen(date){
+        let d = new Date();
+        if(d>date){
+            return ' прошло с даты ';
+        }
+        else{
+            return ' осталось до даты '
+        }
+    }
+    function dateformat(date){
+        let r = Math.floor(Math.random() * Math.floor(4));
+        let arrdate = [];
+        let dd = date.getDate();
+        let mm = date.getMonth()+1;
+        let yy = date.getFullYear();
+        arrdate.push(dd+'.'+mm+'.'+yy);
+        arrdate.push(dd+'/'+mm+'/'+yy);
+        arrdate.push(dd+'-'+mm+'-'+yy);
+        arrdate.push(date.toLocaleString("ru", options));
+        
+        return arrdate[r];
+    }
+    function moremoonyear(date){
+        let dd = +date.getDate();
+        let mm = +date.getMonth();
+        let yy = +date.getFullYear();
+        let name = getmoonyear(yy, mm, mm);
+        let word = name.split(' ');
+        word = word[word.length-1];
+        let aw = word.split('');
+        for(let i=0; i<aw.length; i++){
+            if(aw[i] == '(' || aw[i] == ')'){
+                aw[i] = '';
+            }
+        }
+        word = aw.join('');
+        
+        return word + ' приходятся на: ' + (yy+12) + ', ' + (yy+24);
+    }
+    function yearforyou(){
+        let rd = Math.floor(Math.random() * Math.floor(89));
+        rd+=1;
+        if(arryear.indexOf(rd)<0){
+            arryear.push(rd);
+        }
+        
+        if(arryear.length<6){
+            yearforyou();
+        }
+        
+    }
+    function setluckenum(yy){
+        yy+='';
+        let res = toOne(yy);
+        let nums = ['',' один',' два',' три',' четыре',' пять',' шесть',' семь',' восемь',' девять']
+        return nums[res];
+    }
+    function zodsmall(date){
+        let mm = date.getMonth();
+        let dd = date.getDate();
+        let z = zodiak(dd,mm);
+        let arr = z.split(',')
+        return arr[0];
+    }
+    function randwords(n){
+        let wordsmain = ['а','е', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'б', 'в', 'г', 'д', 'ж', 'з', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т',  'ф', 'х', 'ц', 'ч', 'ш', 'щ'];
+        let res = [];
+        for(let i=0; i<n; i++){
+            let r = Math.floor(Math.random() * Math.floor(wordsmain.length));
+            if(res.indexOf(wordsmain[r])<0){
+                res.push(wordsmain[r]);
+            }
+            else i--;
+        }
+        res = res.join(', ');
+        return res.toUpperCase();
+    }
 
     for(let i=0; i<1; i++){
         thisdate.setDate(thisdate.getDate()+1);
@@ -791,83 +937,109 @@
         let thisyear = +thisdate.getFullYear();
         let urlphrase = 'День ' + thisdate.toLocaleString("ru", options) +  ' года – факты, гороскоп, люди ';
                alldata  = '<h1>' + urlphrase + '</h1><br />'
-                        + '<div class="pagepunkt">День недели: ' + weekdays[thisdate.getDay()] + '</div><br />'
-                        + '<div class="pagepunkt">' + isworkday(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"class="pagepunkt">Порядковый номер дня: ' + parseInt(getnumoftheday(thisdate, 24)) + '</div><br />'
-                        + '<div class="pagepunkt"> Порядковый номер недели: ' + parseInt(getnumoftheday(thisdate, 168)) + '</div><br />'
-                        + '<div class="pagepunkt"> Номер декады: ' + decade(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Порядковый номер месяца: ' + (thismonth+1) + '</div><br />'
-                        + '<div class="pagepunkt"> Сколько в месяце дней: ' + dayinmonth(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Время года: ' + timeofyear(thisdate) + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Сколько дней в году: ' + daysinyear(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Лунный день и фаза: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Знак зодиака: ' + zodiak(thisday, thismonth) + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Восточный год: ' + getmoonyear(thisyear, thismonth, thisday) + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Славянский знак зодиака: ' + zodiakSlav(thisday, thismonth) + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Славянский год: ' + setSlavYear(thisdate) + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Тотем: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Гороскоп друидов: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Удачный цвет по дате рождения: ' + setluckcolor(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Дерево по дате рождения: ' + druidTree(thisday, thismonth) + '</div><br />'
-                        + '<div class="pagepunkt"> Цветок: ' + druidFlower(thisdate) + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Благовония, которые вам подойдут: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Число по дате рождения: ' + toOne(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Лучше если в вашем номере телефона будут цифры : ' + ' НЕТ ДАННЫХ ' + '</div><br />'
-                        + '<div class="pagepunkt"> Камень по дате рождания: ' + druidStone(thisday, thismonth) + '</div><br />'
-                        + '<div class="pagepunkt"> Металл: ' + ' НЕТ ДАННЫХ ' + '</div><br />'
-                        + '<div class="pagepunkt"> Фигура/Cимвол/Предмет ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
+                        + '<div class="pagepunkt">' + ' <i>ЗДЕСЬ БУДЕТ DESCRIPTION</i> ' + '</div><br />'
+                        + '<div class="pagepunkt">Точные статистически данные про день ' + thisdate.toLocaleString("ru", options) + ' года</div><br />'
+                        + '<div class="pagepunkt">Какой день недели ' + dateformat(thisdate) + ' года - ' + weekdays[thisdate.getDay()] + '</div><br />'
+                        + '<div class="pagepunkt">Это будет ' + isworkday(thisdate) + ', находящийся на ' + parseInt(getnumoftheday(thisdate, 168)) + ' неделе, будет идти ' + decade(thisdate) + ';</div><br />'
+                        + '<div class="pagepunkt">' + getrumonth(thismonth) + ' - это ' + (thismonth+1) + ' месяц каждого года;</div><br />'
+                        + '<div class="pagepunkt">Количество дней в ' + getrumonth(thismonth, 'y') + ' - ' + dayinmonth(thisdate) + ' день, время года ' + timeofyear(thisdate) + ';</div><br />'
+                        + '<div class="pagepunkt"class="pagepunkt">Сколько дней прошло с начала этого года - ' + parseInt(getnumoftheday(thisdate, 24)) + ';</div><br />'
+                        + '<div class="pagepunkt">' + thisyear + daysinyear(thisdate) + '</div><br />'
+                        + '<div class="pagepunkt"> Лунный календарь на ' + dateformat(thisdate) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<h3> Счетчик сколько дней  ' + waswhen(thisdate) + thisdate.toLocaleString("ru", options) + '</h3><br />'
+                        + '<div class="pagepunkt" id="timerhere" atttable="yes" attdate='+ transform(thisdate) +'> </div><br />'
+                        + '<h3> Гороскоп на день ' + dateformat(thisdate) + ' года, полное описание знака зодиака</h3><br />'
+                        + '<div class="pagepunkt"> Какой знак зодиака у людей родившихся ' + dateformat(thisdate) + ' - ' + zodiak(thisday, thismonth) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Цветок подходящий для даты рождения ' + dateformat(thisdate) +' '+ druidFlower(thisdate) +  '</div><br />'
+                        + '<div class="pagepunkt"> Камень для родившихся в день ' + dateformat(thisdate) +' '+ druidStone(thisday, thismonth) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Металл ' + ' <b>НЕТ ДАННЫХ</b> ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' +'</div><br />'
+                        + '<div class="pagepunkt"> Цвет несущий удачу для рожденных - ' + dateformat(thisdate) + '  ' + setluckcolor(thisdate) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' +'</div><br />'
+                        + '<div class="pagepunkt"> Удачный день недели: ' + ' <b>НЕТ ДАННЫХ</b> ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' +'</div><br />'
+                        + '<h4>Какой год по китайскому календарю - ' + dateformat(thisdate) + ' год</h4><br />'
+                        + '<div class="pagepunkt"> День '  + dateformat(thisdate) + ' пришелся на восточный год ' + getmoonyear(thisyear, thismonth, thisday) + ', также восточные года ' + moremoonyear(thisdate) + '</div><br />'
+                        + '<h4>' + dateformat(thisdate) + ' года описание и рекомендации по подбору тотемов – талисманов по древним ведическим системам</h4><br />'
+                        + '<div class="pagepunkt"> Славянский знак зодиака, который действует в этот день месяца - ' + zodiakSlav(thisday, thismonth) + '</div><br />'
+                        + '<div class="pagepunkt"> Славянский год: ' + setSlavYear(thisdate) + '</div><br />'
+                        + '<div class="pagepunkt"> Дерево удачи по гороскопу друидов: ' + druidTree(thisday, thismonth) + '</div><br />'
+                        + '<div class="pagepunkt"> Тотем - Цветок несущий удачу по гороскопу друидов  ' + druidFlower(thisdate) + '</div><br />'
+                        + '<div class="pagepunkt"> Тотемы - Животные по дате рождения  ' + druidAnimal(thisday, thismonth) + '</div><br />'
+                        + '<div class="pagepunkt"> Камень удачи, который нужно подходит ко дню рождения  ' + dateformat(thisdate) + ' ' + druidStone(thisday, thismonth) + '</div><br />'
+                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать индивидуальный гороскоп по дате рождения</a></div>'
+                        + '<h3> Благоприятные и неблагоприятные аспекты для людей с датой рождения ' + dateformat(thisdate) + ' года</h3><br />'
+                        + '<div class="pagepunkt"> Благовония, которые вам подойдут: ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Людям, которые родились в этот день недели, будет лучше спать, если изголовье вашей кровати будет стоять на  ' + randsleep() + '</div><br />'
+                        + '<div class="pagepunkt"> Этому дню соответствует карта Таро – аркан который имеет наибольшее переплетение с ' + dateformat(thisdate) +' - '+ taro(thisday, thismonth) + '</div><br />'
+                        + '<div class="pagepunkt"> Благоприятные года жизни: ' + arryear[0] + ' лет, ' + arryear[1] + ' лет, ' + arryear[2] + ' лет' + '</div><br />'
+                        + '<div class="pagepunkt"> Опасные года жизни: ' + arryear[3] + ' лет, ' + arryear[4] + ' лет, ' + arryear[5] + ' лет' + '</div><br />'
+                        + '<div class="pagepunkt"> Удачные дни года: ' + rand3dates(5) + '</div><br />'
+                        + '<div class="pagepunkt"> Удачные дни недели, в которые можно ожидать удачу и счастливые моменты ' + randweeks(3) + '</div><br />'
+                        + '<div class="pagepunkt"> Удачное время суток, для новых свершений ' + randclock() + ' часов, по местному времени</div><br />'
+                        + '<div class="pagepunkt"> Здоровье ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Еда ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Опасность может прийти ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать индивидуальный биоритм</a></div>'
+                        + '<h4>Нумерология даты ' + dateformat(thisdate) + ' года</h4><br />'
+                        + '<div class="pagepunkt"> Нумерологическое число удачи: <a href="#">' + setluckenum(thisday) + '</a></div><br />'
                         + '<div class="pagepunkt"> Число судьбы: ' + toOne(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Вам соответствует карта Таро: ' + taro(thisday, thismonth) + '</div><br />'
-                        + '<div class="pagepunkt"> Опасность придет от: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Благоприятные года жизни: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Опасные года жизни: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Удачные дни недели: ' + ' НЕТ ДАННЫХ ' + '</div><br />'
-                        + '<div class="pagepunkt"> Удачные дни года для начала дел: ' + rand3dates() + '</div><br />'
-                        + '<div class="pagepunkt"> Удачные дни года для строительства: ' + rand3dates() + '</div><br />'
-                        + '<div class="pagepunkt"> Удачные дни года для путешествия: ' + rand3dates() + '</div><br />'
+                        + '<div class="pagepunkt"> Число которое должен содержать номер телефона - ' + (Math.floor(Math.random() * Math.floor(9))) + '</div><br />'
                         + '<div class="pagepunkt"> Благоприятное время суток: ' + goodmorning() + '</div><br />'
-                        + '<div class="pagepunkt"> Здоровье ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Еда ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Спать лучше на ' + randsleep() + '</div><br />'
-                        + '<div class="pagepunkt"> Святой по дате рождения: ' + ' НЕТ ДАННЫХ ' + '</div><br />'
-                        + '<div class="pagepunkt"> Ангел Хранитель: ' + angel(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Святцы/именины: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Икона по дате рождения: ' + icon(thisday, thismonth) + '</div><br />'
-                        + '<h2>Амулеты для родившихся ' + thisdate.toLocaleString("ru", options) + '</h1><br />'
-                        + '<div class="pagepunkt"> Амулет любви: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Амулет здоровья: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Денежный талисман: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Талисман для бизнеса: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Оберег от порчи: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Оберег для семьи: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<h2>Характеристика мужчин, родившихся ' + thisdate.toLocaleString("ru", options) + '</h1><br />'
-                        + '<div class="pagepunkt"> Влюбить мужчину с датой рождения ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Мужчине лучше, если ваше имя будет на букву: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Лучшие года для свадьбы: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Лучшие года для рождения детей: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Лучшие года для переезда: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Лучшие года для  начала дела: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Мужчине с датой рождения лучше дарить: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<h2>Характеристика женщин, родившихся ' + thisdate.toLocaleString("ru", options) + '</h1><br />'
-                        + '<div class="pagepunkt"> Влюбить женщину с датой рождения ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Талисманы: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Обереги: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Женщине лучше, если ваше имя будет на букву : ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Лучшее время для свадьбы: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Лучшее время для рождения детей : ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Лучшее время для переезда: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Лучшее время для начала дела: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Женщине с датой рождения лучше дарить: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Известные люди: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Праздники: ' + ' ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА ' + '</div><br />'
-                        + '<div class="pagepunkt"> Прописью эта дата пишется: ' + propis(thisdate, "ru") + '</div><br />'
-                        + '<div class="pagepunkt"> Римскими цифрами дата пишется: ' + toroman(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Транслитом эта дата пишется: ' + propis(thisdate, "lat") + '</div><br />'
+                        + '<h3>Описание людей, мужчин и женщин, родившихся в день ' + dateformat(thisdate) + ' года</h3><br />'
+                        + '<div class="pagepunkt"> Люди, которые родились в этот день, имеют различную степень предрасположенности к творчеству и имеют разнообразные таланты: <b>ГРАФИК</b> </div><br />'
+                        + '<div class="pagepunkt"> Положительные черты характера человека родившегося  ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Отрицательные черты характера человека родившегося  ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Как влюбить человека с днем рождения ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<h4>Совместимость людей родившихся ' + dateformat(thisdate) + ' года в Дружбе, Любви, Работе и Бизнесе</h4><br />'
+                        + '<div class="pagepunkt"> Совместимость людей родившихся ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Узнайте точную совместимость у людей знака зодиака ' + zodsmall(thisdate) +' и восточный год ' + getmoonyear(thisyear, thismonth, thisday) + ', по различным жизненным направлениям.</div><br />'
+                        + '<div class="pagepunkt"> <b>ЗДЕСЬ БУДЕТ ТАБЛИЦА</b></div><br />'
+                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать любовную совместимость по дате рождения</a></div>'
+                        + '<h4>Характеристики мужчин родившихся ' + dateformat(thisdate) + '</h4><br />'
+                        + '<div class="pagepunkt"> Лучше если мужское имя или фамилия будет содержать буквы ' + randwords(3) +' - это стабилизирует вашу энергетику</div><br />'
+                        + '<div class="pagepunkt"> Мужчинам с днем рождения ' + dateformat(thisdate) + ' года лучше дарить подарки - ' +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<strong>Аспекты характера мужчины, родившегося ' + dateformat(thisdate) + ' <b>ЗДЕСЬ БУДЕТ ГРАФИК</b></strong>'
+                        + '<h4>Характеристики женщин родившихся ' + dateformat(thisdate) + '</h4><br />'
+                        + '<div class="pagepunkt"> Лучше если женское имя или фамилия будет содержать буквы ' + randwords(3) +' - это привлечет вам нужную энергетику и даст жизненные силы.</div><br />'
+                        + '<div class="pagepunkt"> Женщинам с днем рождения ' + dateformat(thisdate) + ' года лучше дарить подарки - ' +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<strong>Аспекты характера женщин, родившихся ' + dateformat(thisdate) + ' <b>ЗДЕСЬ БУДЕТ ГРАФИК</b></strong>'
+                        + '<h3>Религиозные праздники, приходящиеся на день ' + dateformat(thisdate) + ' года</h3><br />'
+                        + '<div class="pagepunkt"> Икона покровительствующая дню: '+ dateformat(thisdate) +' - '+ icon(thisday, thismonth) + '</div><br />'
+                        + '<div class="pagepunkt"> Ангел – Хранитель этого дня недели - ' + angel(thisdate) + '</div><br />'
+                        + '<div class="pagepunkt"> Православные праздники, наступающие ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt">Именины по православным святцам на ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<h3>Как правильно надо писать прописью ' + dateformat(thisdate) + ' года, на разных языках</h3><br />'
+                        + '<div class="pagepunkt">Как можно написать ' + dateformat(thisdate) + ' года римскими цифрами - ' + toroman(thisdate) + ', узнайте как правильно писать любую дату римскими числами - Конвертер <a href="#">здесь</a></div><br />'
+                        + '<div class="pagepunkt">Как написать ' + dateformat(thisdate) + ' года латиницей (английскими буквами) – на транслите пишется – ' + propis(thisdate, "lat") + '</div><br />'
+                        + '<div class="pagepunkt">Как по русскому, словами пишется  ' + dateformat(thisdate) + ' г., в русском языке правильно писать прописью – ' + propis(thisdate, "ru") + '</div><br />'
                         + '<div class="pagepunkt"> Формат даты в английском языке: ' + toukdate(thisdate) + '</div><br />'
+        
+                        +'<b>КАЛЕНДАРЬ</b>';
+        
+        
+                      //  + '<div class="pagepunkt" id="biorhythm" attdate='+ transform(thisdate) +'></div><br />'
+        
+        
+                        +'<script>let script = document.createElement("script");script.src="/includes/timer.js;document.getElementsByTagName("head")[0].appendChild(script);"<script>';
                                 
         let div = document.createElement('div');
         //div.textContent = alldata;
         div.innerHTML = alldata;
         parser.appendChild(div);
+        
+        let timerjs = document.createElement("script");
+        timerjs.src="./includes/timer.js";
+        document.getElementsByTagName("head")[0].appendChild(timerjs);
+        
+        let styles = document.createElement("link");
+        styles.rel="stylesheet";
+        styles.href = "./includes/allpagestyle.css";
+        document.getElementsByTagName("head")[0].appendChild(styles);
+        
+     /*   let liteChart = document.createElement("script");
+        liteChart.src="./includes/liteChart.min.js";
+        document.getElementsByTagName("head")[0].appendChild(liteChart);
+        let biojs = document.createElement("script");
+        biojs.src="./includes/biorhythm.js";
+        document.getElementsByTagName("head")[0].appendChild(biojs); */
+
     } 
 
