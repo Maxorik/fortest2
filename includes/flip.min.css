@@ -1,0 +1,243 @@
+/*
+ * Flip v1.7.1 - A Flip view for Tick Counter
+ * Copyright (c) 2018 PQINA - https://pqina.nl/flip
+ */
+.tick {
+  font-size:1rem; white-space:nowrap; font-family:arial,sans-serif;
+}
+
+.tick-flip,.tick-text-inline {
+  font-size:2.5em;
+}
+
+.tick-label {
+  margin-top:1em;font-size:1em;
+}
+
+.tick-char {
+  width:1.5em;
+}
+
+.tick-text-inline {
+  display:inline-block;text-align:center;min-width:1em;
+}
+
+.tick-text-inline+.tick-text-inline {
+  margin-left:-.325em;
+}
+
+.tick-group {
+  margin:0 .5em;text-align:center;
+}
+
+.tick-text-inline {
+   color: #595d63 !important; 
+}
+
+.tick-label {
+   color: #595d63 !important; 
+}
+
+.tick-flip-panel {
+   color: #fff !important; 
+}
+
+.tick-flip {
+   font-family: !important; 
+}
+
+.tick-flip-panel-text-wrapper {
+   line-height: 1.45 !important; 
+}
+
+.tick-flip-panel {
+   background-color: #3c3e3c !important; 
+}
+
+.tick-flip {
+   border-radius:0.12em !important; 
+}
+
+.flipbtn{
+    padding: 0;
+    margin: 0 5px;;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1.125em;
+    line-height: 2.5;
+    text-transform: uppercase;
+    background-color: #3598db;
+    color: #fff;
+    cursor: pointer;
+    border-radius:5px;
+}
+
+.flipbtn:hover{
+    background-color: #3c3e3c;
+}
+
+.tick-controls{
+    margin-left: 10px;
+}
+
+.flipfon{
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    width:100%;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.clockandlabelt2{
+    margin: 0 auto;
+    padding: 0 12%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;          /*жирность текста (максимум)*/
+    font-size: 1.2em;           /*размер шрифта*/
+    color:beige !important;
+    font-weight: bold !important;
+    text-shadow: #000 1px 1px 0, #000 -1px -1px 0, 
+                 #000 -1px 1px 0, #000 1px -1px 0;
+    
+}
+
+.itlabelt2, .numlt2{
+    font-size: 1em;
+}
+
+.middle2{
+    width:40%;
+    padding: 10px 0px;
+    text-align: center;
+    border: 2px solid beige; /*рамка вокруг таблицы*/
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+#sect2{
+    color:#FF1E00;
+}
+
+.columnticks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tickshere{
+    grid-template-rows: 60% 60%;
+    grid-template-columns: 15% 15% 15% 15%;
+}
+
+
+@media screen and (max-width: 980px){
+    
+    .tickshere{
+        grid-template-rows: 60% 60%;
+        grid-template-columns: 20% 20% 20% 20%;
+    }
+    .tick-label:first-child, .tick-text:first-child{
+        font-size: 1.5em !important;
+        margin-top: 10% !important;
+    }
+    
+    .htimehere{
+        margin-bottom: 5px !important;
+        font-size: 1.5em;
+    }
+    
+    .clockandlabel{
+        font-size: 0.7em;
+        margin-left: 2px;
+    }
+    
+    .numl{
+        padding: 10px;
+        font-size: 2em;
+    }
+    
+    .itlabel{
+        font-size: 1em !important;
+    }
+    
+    .middle{
+        width:70%;
+        margin-left: 0;
+    }
+    
+    .middle2{
+        font-size: 0.5em;
+        line-height: 2em;
+        margin-top: 2px;
+        width: 50%;
+    }
+    
+}
+
+
+.tick{box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;position:relative;z-index:1;line-height:1.4}.tick *{box-sizing:inherit}.tick [data-view]{max-width:100%}.tick span[data-view]{display:inline-block}.tick [data-layout~=pad]{margin:-.25em}.tick [data-layout~=pad]>*{margin:.25em}.tick [data-layout~=horizontal]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.tick [data-layout~=horizontal][data-layout~=baseline]{-webkit-box-align:baseline;-ms-flex-align:baseline;align-items:baseline}.tick [data-layout~=horizontal][data-layout~=center]{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.tick [data-layout~=horizontal][data-layout~=right]{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}.tick [data-layout~=horizontal][data-layout~=left]{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}.tick [data-layout~=horizontal][data-layout~=fill],.tick [data-layout~=horizontal][data-layout~=stretch]{-ms-flex-line-pack:stretch;align-content:stretch;-ms-flex-wrap:nowrap;flex-wrap:nowrap}.tick [data-layout~=horizontal][data-layout~=fill]>*,.tick [data-layout~=horizontal][data-layout~=stretch]>*{-webkit-box-flex:1;-ms-flex:1 0 0px;flex:1 0 0;width:100%}.tick [data-layout~=horizontal][data-layout~=multi-line]{-ms-flex-wrap:wrap;flex-wrap:wrap}.tick [data-layout~=horizontal][data-layout~=fit]{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-ms-flex-line-pack:center;align-content:center;white-space:nowrap;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}.tick [data-layout~=vertical]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.tick [data-layout~=vertical][data-layout~=top]{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}.tick [data-layout~=vertical][data-layout~=bottom]{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;min-height:100%}.tick [data-layout~=vertical][data-layout~=middle]{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;min-height:100%}.tick [data-layout~=vertical][data-layout~=left]{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.tick [data-layout~=vertical][data-layout~=right]{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.tick [data-layout~=vertical][data-layout~=center]{text-align:center}.tick [data-layout~=vertical][data-layout~=fill],.tick [data-layout~=vertical][data-layout~=stretch]{-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;min-height:100%}.tick [data-layout~=vertical][data-layout~=fill]>*,.tick [data-layout~=vertical][data-layout~=stretch]>*{-webkit-box-flex:1;-ms-flex:1 0 0px;flex:1 0 0}.tick [data-layout~=vertical]>*+*{margin-top:.5em}.tick [data-layout~=overlay]{position:relative}.tick [data-layout~=overlay]>*{margin:0}.tick [data-layout~=overlay][data-layout~=center]{text-align:center}.tick [data-layout~=overlay][data-layout~=left]{text-align:left}.tick [data-layout~=overlay][data-layout~=right]{text-align:right}.tick [data-layout~=overlay]>[data-overlay=fill],.tick [data-layout~=overlay]>[data-overlay=stretch]{position:absolute;left:0;right:0;top:0;bottom:0}.tick [data-layout~=overlay]>[data-overlay=center]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position:absolute;left:0;right:0;top:0;bottom:0}.tick-flip{position:relative;text-align:center}.tick-flip *{border-radius:inherit;white-space:pre;letter-spacing:inherit;text-indent:inherit}.tick-flip-front{border-bottom-left-radius:0;border-bottom-right-radius:0}.tick-flip-back{border-top-left-radius:0;border-top-right-radius:0}.tick-flip-spacer{display:block;visibility:hidden}.tick-flip-shadow{position:absolute;left:1px;right:1px;top:1px;bottom:1px;color:transparent!important;background:transparent!important}.tick-flip-shadow-top{bottom:calc(50% - 1px)}.tick-flip-shadow-bottom{top:calc(50% + 1px)}.tick-flip-card-shadow{position:absolute;left:.15em;right:.15em;bottom:.125em;height:.5em;background-color:transparent;border-radius:0;opacity:0;-webkit-transform-origin:0 100%;transform-origin:0 100%;box-shadow:0 .125em .25em rgba(0,0,0,.5),0 .125em .5em rgba(0,0,0,.75);z-index:0}.tick-flip-card{position:absolute;z-index:1;left:0;top:0;width:100%;height:100%;-webkit-perspective:4em;perspective:4em}.tick-flip-panel-back,.tick-flip-panel-front{position:absolute;left:0;width:100%;height:51%;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}.tick-flip-panel-back-text,.tick-flip-panel-front-text{position:absolute;left:-1px;top:0;right:-1px;height:100%;overflow:hidden}.tick-flip-panel-text-wrapper{position:absolute;left:0;top:0;right:0;height:100%}.tick-flip-panel-back-text .tick-flip-panel-text-wrapper{height:200%;top:-100%}.tick-flip-panel-front{-webkit-transform-origin:center bottom;transform-origin:center bottom;top:0;z-index:2;box-shadow:inset 0 1px hsla(0,0%,100%,.05)}.tick-flip-panel-back{-webkit-transform-origin:center top;transform-origin:center top;top:50%;z-index:1;box-shadow:inset 0 -1px rgba(0,0,0,.1)}.tick-flip-panel-back:after{z-index:1;content:"";position:absolute;left:0;top:0;width:100%;height:100%;background-image:linear-gradient(180deg,rgba(0,0,0,.3) 1px,rgba(0,0,0,.15) 0,transparent 30%)}.tick-flip-panel-back-shadow{z-index:2}.tick-flip-panel-back-highlight{z-index:3}.tick-flip-panel-back-highlight,.tick-flip-panel-back-shadow{border-bottom-left-radius:inherit;border-bottom-right-radius:inherit}.tick-flip-panel-back-highlight,.tick-flip-panel-back-shadow,.tick-flip-panel-front-shadow{position:absolute;left:0;top:0;right:0;bottom:0;opacity:0}.tick-flip-panel-front-shadow{background-image:linear-gradient(0deg,rgba(0,0,0,.8),rgba(0,0,0,.3))}.tick-flip-panel-back-shadow{background-image:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,.5))}.tick-flip-panel-back-highlight{background-image:linear-gradient(180deg,hsla(0,0%,100%,.15),hsla(0,0%,100%,.3))}.tick [data-style*="shadow:inner"],.tick [data-style*="shadow:inner"] .tick-flip-card-shadow,.tick [data-style*="shadow:none"] .tick-flip-card-shadow,.tick [data-style*="shadow:none"] .tick-flip-panel-back,.tick [data-style*="shadow:none"] .tick-flip-panel-front,.tick [data-style*="shadow:none"] .tick-flip-shadow{box-shadow:none}.tick [data-style*="shadow:none"] .tick-flip-back:after,.tick [data-style*="shadow:none"] .tick-flip-panel-back-shadow,.tick [data-style*="shadow:none"] .tick-flip-panel-back-text:after,.tick [data-style*="shadow:none"] .tick-flip-panel-front-shadow{background-image:none}.tick [data-style*="rounded:none"]{border-radius:0}.tick [data-style*="rounded:panels"] .tick-flip-front,.tick [data-style*="rounded:panels"] .tick-flip-shadow-bottom{border-bottom-left-radius:inherit;border-bottom-right-radius:inherit}.tick [data-style*="rounded:panels"] .tick-flip-back,.tick [data-style*="rounded:panels"] .tick-flip-panel-back:after,.tick [data-style*="rounded:panels"] .tick-flip-shadow-top{border-top-left-radius:inherit;border-top-right-radius:inherit}.tick-flip{margin-left:.0625em;margin-right:.0625em;min-width:1.125em;border-radius:.125em;letter-spacing:.25em;text-indent:.25em}
+
+/* Цвета ячейки:  .tick-flip-panel
+color - цвет цифр;
+background-color - цвет фона
+*/
+
+.tick-flip-panel{
+    color:#373b3a;              
+    background-color:#00a088    
+}
+
+.tick-flip-shadow{box-shadow:0 .125em .3125em rgba(0,0,0,.25),0 .02125em .06125em rgba(0,0,0,.25)}
+
+    .tick {
+        font-size:1rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    }
+    
+    .tick-label {
+        font-size:.375em;
+        text-align:center;
+        color:beige !important;
+        font-weight: bold !important;
+        text-shadow: #000 1px 1px 0, #000 -1px -1px 0, 
+                 #000 -1px 1px 0, #000 1px -1px 0;
+    }
+
+.tick-text{
+    color:beige !important;
+    font-weight: bold !important;
+    text-shadow: #000 1px 1px 0, #000 -1px -1px 0, 
+                 #000 -1px 1px 0, #000 1px -1px 0;
+    font-size: 70%;
+}
+
+    .tick-group {
+        margin:0 .25em;
+        text-align:center;
+    }
+
+.tick-group:last-child span{
+    color:#FF1E00 !important
+}
+
+.tick-text:last-child{
+     color:beige !important;
+}
+
+.htimehere{
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 0 !important;
+        font-weight: bolder;
+        font-size: 3em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+

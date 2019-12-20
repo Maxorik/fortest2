@@ -843,7 +843,7 @@ let parser = document.querySelector('.parsetext');
         else if (m==12 && d>=22 || m==1 && d<=20) return "Дьявол - Карта Таро Дьявол призывает вас столкнуться с вашей теневой стороной личности для того, чтобы собрать знания, необходимые для духовной трансформации. Эта карта советует вам задуматься о любом негативе, который заставляет вас сомневаться в себе, поменять сомнения на уверенность и крепко хранить своё высочайшее видение того, кто вы есть на самом деле и что вам нужно от жизни.";
     }
     function transform(date){
-        return ''+ date.getFullYear() + '/' + (date.getMonth()+1) + '/' + date.getDate();
+        return ''+ date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
     }
     function getrumonth(mm, small){
         let month = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
@@ -931,13 +931,65 @@ let parser = document.querySelector('.parsetext');
         return res.toUpperCase();
     }
 
+    function createtable(){
+        let zod = ['козерог', 'водолей', 'рыбы','овен', 'телец','близнецы', 'рак', 'лев', 'дева', 'весы', 'скорпион', 'стрелец', 'козерог']; 
+        function getrandom(){
+            return Math.floor(Math.random() * Math.floor(100)) + 1;
+        }
+        let headt = "<table id='zodsovmtable'><tr><td></td><td>Дружба</td><td>Любовь</td><td>Работа</td><td>Деньги</td></tr>";
+        let endt = "</table>";
+        let midt = '';
+        for(let i=0; i<zod.length; i++){
+            midt += "<tr><td>" + zod[i] + "</td><td>" + getrandom() + "</td><td>"  + getrandom() + "</td><td>" + getrandom() + "</td><td>" + getrandom() + "</td></tr>";
+        }
+        return '' + headt + midt + endt;
+    }
+
+    function createcalendar(y,m,d){
+        function createCalendar(elem, year, month) {
+            let monthc = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+            let mon = month;
+            let d = new Date(year, mon);
+            table = '<div style="display:flex; flex-direction:row;"><div class="cleft"><</div><div class="calhead">'+monthc[m]+' '+year+'</div><div class="cright">></div></div>';
+            table += '<div class="fordyncal"><table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
+            for (let i = 0; i < getDay(d); i++) {
+                table += '<td></td>';
+            }
+             while (d.getMonth() == mon) {
+             table += '<td class="cal" style="text-align:center; padding:10px; background-color:beige !important;">' + d.getDate() + '</td>';
+
+             if (getDay(d) % 7 == 6) { 
+                table += '</tr><tr>';
+             }
+                d.setDate(d.getDate() + 1);
+             }
+             if (getDay(d) != 0) {
+                for (let i = getDay(d); i < 7; i++) {
+                    table += '<td></td>';
+                }
+             }
+            table += '</tr></table></div>';
+            return table;
+        }
+        function getDay(date) { 
+            let day = date.getDay();
+            if (day == 0) day = 7; 
+            return day - 1;
+        }
+
+        let calendar = document.getElementById('calendar');
+        let res = createCalendar(calendar, y, m, d);
+        return res;
+    }
+
+
     for(let i=0; i<1; i++){
         thisdate.setDate(thisdate.getDate()+1);
         let thisday = +thisdate.getDate();
         let thismonth = +thisdate.getMonth();
         let thisyear = +thisdate.getFullYear();
         let urlphrase = 'День ' + thisdate.toLocaleString("ru", options) +  ' года – факты, гороскоп, люди ';
-               alldata  = '<h1>' + urlphrase + '</h1><br />'
+               alldata  = '<div class="pinkpart"><h1>' + urlphrase + '</h1><br />'
                         + '<div class="pagepunkt">' + ' <i>ЗДЕСЬ БУДЕТ DESCRIPTION</i> ' + '</div><br />'
                         + '<div class="pagepunkt">Точные статистически данные про день ' + thisdate.toLocaleString("ru", options) + ' года</div><br />'
                         + '<div class="pagepunkt">Какой день недели ' + dateformat(thisdate) + ' года - ' + weekdays[thisdate.getDay()] + '</div><br />'
@@ -946,27 +998,30 @@ let parser = document.querySelector('.parsetext');
                         + '<div class="pagepunkt">Количество дней в ' + getrumonth(thismonth, 'y') + ' - ' + dayinmonth(thisdate) + ' день, время года ' + timeofyear(thisdate) + ';</div><br />'
                         + '<div class="pagepunkt"class="pagepunkt">Сколько дней прошло с начала этого года - ' + parseInt(getnumoftheday(thisdate, 24)) + ';</div><br />'
                         + '<div class="pagepunkt">' + thisyear + daysinyear(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Лунный календарь на ' + dateformat(thisdate) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<h3> Счетчик сколько дней  ' + waswhen(thisdate) + thisdate.toLocaleString("ru", options) + '</h3><br />'
-                        + '<div class="pagepunkt" id="timerhere" atttable="yes" attdate='+ transform(thisdate) +'> </div><br />'
-                        + '<h3> Гороскоп на день ' + dateformat(thisdate) + ' года, полное описание знака зодиака</h3><br />'
+                        + '<div class="pagepunkt"> Лунный календарь на ' + dateformat(thisdate) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br /></div>'
+                        + '<div class="whitepart"><h3> Счетчик сколько дней  ' + waswhen(thisdate) + thisdate.toLocaleString("ru", options) + '</h3><br />'
+        
+                      //  + '<div class="pagepunkt" id="timerhere" atttable="yes" attdate='+ transform(thisdate) +'> </div><br />'
+                        + "<div id='timerevent' attformat='y,M,d,h,m,s' attdate='" + transform(thisdate) + "'></div></div>"
+        
+                        + '<div class="pinkpart"><h3> Гороскоп на день ' + dateformat(thisdate) + ' года, полное описание знака зодиака</h3><br />'
                         + '<div class="pagepunkt"> Какой знак зодиака у людей родившихся ' + dateformat(thisdate) + ' - ' + zodiak(thisday, thismonth) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
                         + '<div class="pagepunkt"> Цветок подходящий для даты рождения ' + dateformat(thisdate) +' '+ druidFlower(thisdate) +  '</div><br />'
                         + '<div class="pagepunkt"> Камень для родившихся в день ' + dateformat(thisdate) +' '+ druidStone(thisday, thismonth) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
                         + '<div class="pagepunkt"> Металл ' + ' <b>НЕТ ДАННЫХ</b> ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' +'</div><br />'
                         + '<div class="pagepunkt"> Цвет несущий удачу для рожденных - ' + dateformat(thisdate) + '  ' + setluckcolor(thisdate) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' +'</div><br />'
-                        + '<div class="pagepunkt"> Удачный день недели: ' + ' <b>НЕТ ДАННЫХ</b> ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' +'</div><br />'
-                        + '<h4>Какой год по китайскому календарю - ' + dateformat(thisdate) + ' год</h4><br />'
-                        + '<div class="pagepunkt"> День '  + dateformat(thisdate) + ' пришелся на восточный год ' + getmoonyear(thisyear, thismonth, thisday) + ', также восточные года ' + moremoonyear(thisdate) + '</div><br />'
-                        + '<h4>' + dateformat(thisdate) + ' года описание и рекомендации по подбору тотемов – талисманов по древним ведическим системам</h4><br />'
+                        + '<div class="pagepunkt"> Удачный день недели: ' + ' <b>НЕТ ДАННЫХ</b> ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' +'</div><br /></div>'
+                        + '<div class="whitepart"><h4>Какой год по китайскому календарю - ' + dateformat(thisdate) + ' год</h4><br />'
+                        + '<div class="pagepunkt"> День '  + dateformat(thisdate) + ' пришелся на восточный год ' + getmoonyear(thisyear, thismonth, thisday) + ', также восточные года ' + moremoonyear(thisdate) + '</div><br /></div>'
+                        + '<div class="pinkpart"><h4>' + dateformat(thisdate) + ' года описание и рекомендации по подбору тотемов – талисманов по древним ведическим системам</h4><br />'
                         + '<div class="pagepunkt"> Славянский знак зодиака, который действует в этот день месяца - ' + zodiakSlav(thisday, thismonth) + '</div><br />'
                         + '<div class="pagepunkt"> Славянский год: ' + setSlavYear(thisdate) + '</div><br />'
                         + '<div class="pagepunkt"> Дерево удачи по гороскопу друидов: ' + druidTree(thisday, thismonth) + '</div><br />'
                         + '<div class="pagepunkt"> Тотем - Цветок несущий удачу по гороскопу друидов  ' + druidFlower(thisdate) + '</div><br />'
                         + '<div class="pagepunkt"> Тотемы - Животные по дате рождения  ' + druidAnimal(thisday, thismonth) + '</div><br />'
                         + '<div class="pagepunkt"> Камень удачи, который нужно подходит ко дню рождения  ' + dateformat(thisdate) + ' ' + druidStone(thisday, thismonth) + '</div><br />'
-                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать индивидуальный гороскоп по дате рождения</a></div>'
-                        + '<h3> Благоприятные и неблагоприятные аспекты для людей с датой рождения ' + dateformat(thisdate) + ' года</h3><br />'
+                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать индивидуальный гороскоп по дате рождения</a></div></div>'
+                        + '<div class="whitepart"><h3> Благоприятные и неблагоприятные аспекты для людей с датой рождения ' + dateformat(thisdate) + ' года</h3><br />'
                         + '<div class="pagepunkt"> Благовония, которые вам подойдут: ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
                         + '<div class="pagepunkt"> Людям, которые родились в этот день недели, будет лучше спать, если изголовье вашей кровати будет стоять на  ' + randsleep() + '</div><br />'
                         + '<div class="pagepunkt"> Этому дню соответствует карта Таро – аркан который имеет наибольшее переплетение с ' + dateformat(thisdate) +' - '+ taro(thisday, thismonth) + '</div><br />'
@@ -978,44 +1033,44 @@ let parser = document.querySelector('.parsetext');
                         + '<div class="pagepunkt"> Здоровье ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
                         + '<div class="pagepunkt"> Еда ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
                         + '<div class="pagepunkt"> Опасность может прийти ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать индивидуальный биоритм</a></div>'
-                        + '<h4>Нумерология даты ' + dateformat(thisdate) + ' года</h4><br />'
+                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать индивидуальный биоритм</a></div></div>'
+                        + '<div class="pinkpart"><h4>Нумерология даты ' + dateformat(thisdate) + ' года</h4><br />'
                         + '<div class="pagepunkt"> Нумерологическое число удачи: <a href="#">' + setluckenum(thisday) + '</a></div><br />'
                         + '<div class="pagepunkt"> Число судьбы: ' + toOne(thisdate) + '</div><br />'
                         + '<div class="pagepunkt"> Число которое должен содержать номер телефона - ' + (Math.floor(Math.random() * Math.floor(9))) + '</div><br />'
-                        + '<div class="pagepunkt"> Благоприятное время суток: ' + goodmorning() + '</div><br />'
-                        + '<h3>Описание людей, мужчин и женщин, родившихся в день ' + dateformat(thisdate) + ' года</h3><br />'
+                        + '<div class="pagepunkt"> Благоприятное время суток: ' + goodmorning() + '</div><br /></div>'
+                        + '<div class="whitepart"><h3>Описание людей, мужчин и женщин, родившихся в день ' + dateformat(thisdate) + ' года</h3><br />'
                         + '<div class="pagepunkt"> Люди, которые родились в этот день, имеют различную степень предрасположенности к творчеству и имеют разнообразные таланты: <b>ГРАФИК</b> </div><br />'
                         + '<div class="pagepunkt"> Положительные черты характера человека родившегося  ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
                         + '<div class="pagepunkt"> Отрицательные черты характера человека родившегося  ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<div class="pagepunkt"> Как влюбить человека с днем рождения ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<h4>Совместимость людей родившихся ' + dateformat(thisdate) + ' года в Дружбе, Любви, Работе и Бизнесе</h4><br />'
+                        + '<div class="pagepunkt"> Как влюбить человека с днем рождения ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br /></div>'
+                        + '<div class="pinkpart"><h4>Совместимость людей родившихся ' + dateformat(thisdate) + ' года в Дружбе, Любви, Работе и Бизнесе</h4><br />'
                         + '<div class="pagepunkt"> Совместимость людей родившихся ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
                         + '<div class="pagepunkt"> Узнайте точную совместимость у людей знака зодиака ' + zodsmall(thisdate) +' и восточный год ' + getmoonyear(thisyear, thismonth, thisday) + ', по различным жизненным направлениям.</div><br />'
-                        + '<div class="pagepunkt"> <b>ЗДЕСЬ БУДЕТ ТАБЛИЦА</b></div><br />'
-                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать любовную совместимость по дате рождения</a></div>'
-                        + '<h4>Характеристики мужчин родившихся ' + dateformat(thisdate) + '</h4><br />'
+                        + '<div class="pagepunkt tablehere">'+ createtable() +'</div><br />'
+                        + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать любовную совместимость по дате рождения</a></div></div>'
+                        + '<div class="whitepart"><h4>Характеристики мужчин родившихся ' + dateformat(thisdate) + '</h4><br />'
                         + '<div class="pagepunkt"> Лучше если мужское имя или фамилия будет содержать буквы ' + randwords(3) +' - это стабилизирует вашу энергетику</div><br />'
                         + '<div class="pagepunkt"> Мужчинам с днем рождения ' + dateformat(thisdate) + ' года лучше дарить подарки - ' +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<strong>Аспекты характера мужчины, родившегося ' + dateformat(thisdate) + ' <b>ЗДЕСЬ БУДЕТ ГРАФИК</b></strong>'
-                        + '<h4>Характеристики женщин родившихся ' + dateformat(thisdate) + '</h4><br />'
+                        + '<strong>Аспекты характера мужчины, родившегося ' + dateformat(thisdate) + ' <b>ЗДЕСЬ БУДЕТ ГРАФИК</b></strong><div></div></div>'
+                        + '<div class="pinkpart"><h4>Характеристики женщин родившихся ' + dateformat(thisdate) + '</h4><br />'
                         + '<div class="pagepunkt"> Лучше если женское имя или фамилия будет содержать буквы ' + randwords(3) +' - это привлечет вам нужную энергетику и даст жизненные силы.</div><br />'
                         + '<div class="pagepunkt"> Женщинам с днем рождения ' + dateformat(thisdate) + ' года лучше дарить подарки - ' +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<strong>Аспекты характера женщин, родившихся ' + dateformat(thisdate) + ' <b>ЗДЕСЬ БУДЕТ ГРАФИК</b></strong>'
-                        + '<h3>Религиозные праздники, приходящиеся на день ' + dateformat(thisdate) + ' года</h3><br />'
+                        + '<strong>Аспекты характера женщин, родившихся ' + dateformat(thisdate) + ' <b>ЗДЕСЬ БУДЕТ ГРАФИК</b></strong><div></div></div>'
+                        + '<div class="whitepart"><h3>Религиозные праздники, приходящиеся на день ' + dateformat(thisdate) + ' года</h3><br />'
                         + '<div class="pagepunkt"> Икона покровительствующая дню: '+ dateformat(thisdate) +' - '+ icon(thisday, thismonth) + '</div><br />'
                         + '<div class="pagepunkt"> Ангел – Хранитель этого дня недели - ' + angel(thisdate) + '</div><br />'
                         + '<div class="pagepunkt"> Православные праздники, наступающие ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<div class="pagepunkt">Именины по православным святцам на ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<h3>Как правильно надо писать прописью ' + dateformat(thisdate) + ' года, на разных языках</h3><br />'
+                        + '<div class="pagepunkt">Именины по православным святцам на ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br /></div>'
+                        + '<div class="pinkpart"><h3>Как правильно надо писать прописью ' + dateformat(thisdate) + ' года, на разных языках</h3><br />'
                         + '<div class="pagepunkt">Как можно написать ' + dateformat(thisdate) + ' года римскими цифрами - ' + toroman(thisdate) + ', узнайте как правильно писать любую дату римскими числами - Конвертер <a href="#">здесь</a></div><br />'
                         + '<div class="pagepunkt">Как написать ' + dateformat(thisdate) + ' года латиницей (английскими буквами) – на транслите пишется – ' + propis(thisdate, "lat") + '</div><br />'
                         + '<div class="pagepunkt">Как по русскому, словами пишется  ' + dateformat(thisdate) + ' г., в русском языке правильно писать прописью – ' + propis(thisdate, "ru") + '</div><br />'
                         + '<div class="pagepunkt"> Формат даты в английском языке: ' + toukdate(thisdate) + '</div><br />'
         
-                        +'<b>КАЛЕНДАРЬ</b>';
+                        + '<div class="pagepunkt" id="calendar">'+createcalendar(thisyear, thismonth, thisday)+'</div><br /></div>'
         
-        
+                        
                       //  + '<div class="pagepunkt" id="biorhythm" attdate='+ transform(thisdate) +'></div><br />'
         
         
@@ -1026,6 +1081,26 @@ let parser = document.querySelector('.parsetext');
         div.innerHTML = alldata;
         parser.appendChild(div);
         
+        let timerjs = document.createElement("script");
+        timerjs.src="./includes/flip.min.js";
+        document.getElementsByTagName("head")[0].appendChild(timerjs);
+        
+        let myjs = document.createElement("script");
+        myjs.src="./includes/myjs.js";
+        document.getElementsByTagName("body")[0].appendChild(myjs);
+        
+        let styles = document.createElement("link");
+        styles.rel="stylesheet";
+        styles.href = "./includes/flip.min.css";
+        document.getElementsByTagName("head")[0].appendChild(styles);
+        
+        let mainstyles = document.createElement("link");
+        mainstyles.rel="stylesheet";
+        mainstyles.href = "./includes/allpagestyle.css";
+        document.getElementsByTagName("head")[0].appendChild(mainstyles);
+        
+        
+        /*
         let timerjs = document.createElement("script");
         timerjs.src="./includes/timer.js";
         document.getElementsByTagName("head")[0].appendChild(timerjs);

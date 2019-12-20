@@ -1,4 +1,10 @@
-﻿
+﻿body{
+    margin: 0;
+    padding: 0;
+    font-family: 'TT Norms';
+    text-shadow: #000 1px 1px 0, #000 -1px -1px 0, #000 -1px 1px 0, #000 1px -1px 0;
+    color:beige;
+}
 #timerhere{
     background-color: #5a707d; /*цвет фона */
     color: #d4dee4; /*цвет текста */
@@ -324,3 +330,73 @@ b{
     border-radius: 10px;
     padding: 10px;
 }
+
+.tablehere{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:60%;
+    margin: auto;
+}
+
+#zodsovmtable td{
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+#calendar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:60%;
+    margin: auto;
+    height:50%;
+}
+
+.cleft{
+    margin-right: 40px;
+    background-color: red;
+    padding:2px 10px;
+    cursor:pointer;
+}
+.cright{
+    margin-left: 40px;
+     background-color: red;
+    padding:2px 10px;
+    cursor:pointer;
+}
+
+.cleft:hover, .cright:hover{
+    background-color: skyblue;
+}
+
+.pinkpart{
+    background-image: url(pink.png);
+    padding: 10px;
+    margin: 0;
+}
+
+.whitepart{
+    background-image: url(white.png);
+    padding: 10px;
+    margin: 0;
+}
+
+.calhead{
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: 'TT Norms';
+    src: url('./fonts/TTNorms-Medium.eot');
+    src: url('./fonts/TTNorms-Medium.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/TTNorms-Medium.woff2') format('woff2'),
+        url('./fonts/TTNorms-Medium.woff') format('woff'),
+        url('./fonts/TTNorms-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
