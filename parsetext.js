@@ -1,9 +1,7 @@
 
 let parser = document.querySelector('.parsetext');
 
-    let allmonth = ['yanvarya', 'fevralya', 'marta', 'aprelya', 'maya', 'iyunya', 'iyulya', 'avgusta', 'sentyabrya', 'oktyabrya', 'noyabrya', 'dekabrya'];
-
-    let thisdate = new Date(2019, 11, 30);
+    let thisdate = new Date(1904, 11, 30);
     let weekdays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг','Пятница','Суббота'];
     let options = {
         year: 'numeric',
@@ -132,8 +130,8 @@ let parser = document.querySelector('.parsetext');
         for(let i=1; i<38; i++){
             endinterval.setDate(endinterval.getDate() + 10);
             if(date >= startinterval && date<endinterval){
-                ////////////////////////////////// ВЫВОД ТЕКСТА ДОБАВИТЬ///////////////////////////////////////////
-                return(' <i>ТЕКСТ ИЗ ФАЙЛА</i> ');
+                let res = parsetext('cvetok.txt', date, i);
+                return res;
                 break;
             }
             else{
@@ -604,7 +602,20 @@ let parser = document.querySelector('.parsetext');
             num4_1 = ['одна тысяча', 'две тысячи', 'три тысячи'];
             num4_2 = ['одна тысячный', 'двух тысячный','трех тысячный'];
             pyear = 'год';
-            
+        }
+        
+        if(lang == "eng"){
+            monthRU = ['January','February','March','April','May','June','July','August','September','October','November','November'];
+            num1_1 = ['','first','second','third','fourth','fifth','sixth','seventh','eighth','ninth','tenth','eleventh','twelfth','thirteenth','fourteenth','fifteenth','sixteenth','seventeenth','eighteenth','nineteenth'];
+            num1_2 = ['first','second','third','fourth','fifth','sixth','seventh','eighth','ninth','tenth','eleventh','twelfth','thirteenth','fourteenth','fifteenth','sixteenth','seventeenth','eighteenth','nineteenth'];
+            num2_1_1 = ['twentieth','thirtieth'];
+            num2_1_2 = ['twentieth','thirtieth','fortieth','fiftieth','sixtieth','seventieth','eightieth','ninetieth'];
+            num2_2 = ['twentieth','thirtieth','fortieth','fiftieth','sixtieth','seventieth','eightieth','ninetieth'];
+            num3_1 = ['eleven','twelf','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+            num3_2 = ['eleven','twelf','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+            num4_1 = ['', '', ''];
+            num4_2 = ['', '',''];
+            pyear = 'год';
         }
         
         if(lang == 'lat'){
@@ -794,7 +805,6 @@ let parser = document.querySelector('.parsetext');
         let str = 'с ' + hh1 + ':' + mm1 + ' до ' + hh2 + ':' + mm2;
             return str;
     }
-
     function randweeks(h){
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
@@ -930,7 +940,6 @@ let parser = document.querySelector('.parsetext');
         res = res.join(', ');
         return res.toUpperCase();
     }
-
     function createtable(){
         let zod = ['козерог', 'водолей', 'рыбы','овен', 'телец','близнецы', 'рак', 'лев', 'дева', 'весы', 'скорпион', 'стрелец', 'козерог']; 
         function getrandom(){
@@ -944,7 +953,6 @@ let parser = document.querySelector('.parsetext');
         }
         return '' + headt + midt + endt;
     }
-
     function createcalendar(y,m,d){
         function createCalendar(elem, year, month) {
             let monthc = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
@@ -982,6 +990,43 @@ let parser = document.querySelector('.parsetext');
         return res;
     }
 
+    function parsetext(path, date, style){     //style -- rand: случайная строка; 
+        let site = document.location.protocol + '//' + document.location.host + '/autopage/files/' + path;
+        let toreturn = readTextFilez(site, date, style);
+        
+        function readTextFilez(file, date, style){
+            let rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function (){
+              if(rawFile.readyState === 4){
+                 if(rawFile.status === 200 || rawFile.status == 0){
+                     let allText = rawFile.responseText;
+                     let arr = allText.split('\n');
+                     if(style=='rand'){
+                         let r = Math.floor(Math.random() * Math.floor(arr.length));
+                         return arr[r];
+                     }
+                     
+                     else if (isNaN(style)){
+                         return arr[style];
+                     }
+                     
+                     else{
+                         let n = parseInt(getnumoftheday(date, 24)) + 1;
+                         if(date.getDate() == 29 && date.getMonth == 1){
+                             return 'данные не найдены';
+                         }
+                         else return arr[n];
+                     }
+                 }
+              }
+            }
+            rawFile.send(null);
+        }
+        
+        return toreturn;
+    }
+
 
     for(let i=0; i<1; i++){
         thisdate.setDate(thisdate.getDate()+1);
@@ -998,10 +1043,8 @@ let parser = document.querySelector('.parsetext');
                         + '<div class="pagepunkt">Количество дней в ' + getrumonth(thismonth, 'y') + ' - ' + dayinmonth(thisdate) + ' день, время года ' + timeofyear(thisdate) + ';</div><br />'
                         + '<div class="pagepunkt"class="pagepunkt">Сколько дней прошло с начала этого года - ' + parseInt(getnumoftheday(thisdate, 24)) + ';</div><br />'
                         + '<div class="pagepunkt">' + thisyear + daysinyear(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Лунный календарь на ' + dateformat(thisdate) + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br /></div>'
+                        + '<div class="pagepunkt"> Лунный календарь на ' + dateformat(thisdate) + parsetext(('lunn_god/'+thisyear+'.txt'), thisdate, 'style') + '</div><br /></div>'
                         + '<div class="whitepart"><h3> Счетчик сколько дней  ' + waswhen(thisdate) + thisdate.toLocaleString("ru", options) + '</h3><br />'
-        
-                      //  + '<div class="pagepunkt" id="timerhere" atttable="yes" attdate='+ transform(thisdate) +'> </div><br />'
                         + "<div id='timerevent' attformat='y,M,d,h,m,s' attdate='" + transform(thisdate) + "'></div></div>"
         
                         + '<div class="pinkpart"><h3> Гороскоп на день ' + dateformat(thisdate) + ' года, полное описание знака зодиака</h3><br />'
@@ -1022,7 +1065,7 @@ let parser = document.querySelector('.parsetext');
                         + '<div class="pagepunkt"> Камень удачи, который нужно подходит ко дню рождения  ' + dateformat(thisdate) + ' ' + druidStone(thisday, thismonth) + '</div><br />'
                         + '<div class = "biobtn btnmiddle"><a href="#">Рассчитать индивидуальный гороскоп по дате рождения</a></div></div>'
                         + '<div class="whitepart"><h3> Благоприятные и неблагоприятные аспекты для людей с датой рождения ' + dateformat(thisdate) + ' года</h3><br />'
-                        + '<div class="pagepunkt"> Благовония, которые вам подойдут: ' + ' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
+                        + '<div class="pagepunkt"> Благовония, которые вам подойдут: ' + parsetext('blagowonie.txt', thisdate, 'rand') + '</div><br />'
                         + '<div class="pagepunkt"> Людям, которые родились в этот день недели, будет лучше спать, если изголовье вашей кровати будет стоять на  ' + randsleep() + '</div><br />'
                         + '<div class="pagepunkt"> Этому дню соответствует карта Таро – аркан который имеет наибольшее переплетение с ' + dateformat(thisdate) +' - '+ taro(thisday, thismonth) + '</div><br />'
                         + '<div class="pagepunkt"> Благоприятные года жизни: ' + arryear[0] + ' лет, ' + arryear[1] + ' лет, ' + arryear[2] + ' лет' + '</div><br />'
@@ -1060,20 +1103,15 @@ let parser = document.querySelector('.parsetext');
                         + '<div class="whitepart"><h3>Религиозные праздники, приходящиеся на день ' + dateformat(thisdate) + ' года</h3><br />'
                         + '<div class="pagepunkt"> Икона покровительствующая дню: '+ dateformat(thisdate) +' - '+ icon(thisday, thismonth) + '</div><br />'
                         + '<div class="pagepunkt"> Ангел – Хранитель этого дня недели - ' + angel(thisdate) + '</div><br />'
-                        + '<div class="pagepunkt"> Православные праздники, наступающие ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br />'
-                        + '<div class="pagepunkt">Именины по православным святцам на ' + dateformat(thisdate) +' <i>ЗДЕСЬ БУДЕТ ТЕКСТ ИЗ ФАЙЛА</i> ' + '</div><br /></div>'
+                        + '<div class="pagepunkt"> Православные праздники, наступающие ' + dateformat(thisdate) + parsetext('prav_prazdnik.txt', thisdate, 'style') + '</div><br />'
+                        + '<div class="pagepunkt">Именины по православным святцам на ' + dateformat(thisdate) + parsetext('imenin_swyatz.txt', thisdate, 'style') + '</div><br /></div>'
                         + '<div class="pinkpart"><h3>Как правильно надо писать прописью ' + dateformat(thisdate) + ' года, на разных языках</h3><br />'
                         + '<div class="pagepunkt">Как можно написать ' + dateformat(thisdate) + ' года римскими цифрами - ' + toroman(thisdate) + ', узнайте как правильно писать любую дату римскими числами - Конвертер <a href="#">здесь</a></div><br />'
                         + '<div class="pagepunkt">Как написать ' + dateformat(thisdate) + ' года латиницей (английскими буквами) – на транслите пишется – ' + propis(thisdate, "lat") + '</div><br />'
                         + '<div class="pagepunkt">Как по русскому, словами пишется  ' + dateformat(thisdate) + ' г., в русском языке правильно писать прописью – ' + propis(thisdate, "ru") + '</div><br />'
                         + '<div class="pagepunkt"> Формат даты в английском языке: ' + toukdate(thisdate) + '</div><br />'
-        
                         + '<div class="pagepunkt" id="calendar">'+createcalendar(thisyear, thismonth, thisday)+'</div><br /></div>'
-        
-                        
-                      //  + '<div class="pagepunkt" id="biorhythm" attdate='+ transform(thisdate) +'></div><br />'
-        
-        
+
                         +'<script>let script = document.createElement("script");script.src="/includes/timer.js;document.getElementsByTagName("head")[0].appendChild(script);"<script>';
                                 
         let div = document.createElement('div');
@@ -1098,23 +1136,5 @@ let parser = document.querySelector('.parsetext');
         mainstyles.rel="stylesheet";
         mainstyles.href = "./includes/allpagestyle.css";
         document.getElementsByTagName("head")[0].appendChild(mainstyles);
-        
-        
-        /*
-        let timerjs = document.createElement("script");
-        timerjs.src="./includes/timer.js";
-        document.getElementsByTagName("head")[0].appendChild(timerjs);
-        
-        let styles = document.createElement("link");
-        styles.rel="stylesheet";
-        styles.href = "./includes/allpagestyle.css";
-        document.getElementsByTagName("head")[0].appendChild(styles);
-        
-     /*   let liteChart = document.createElement("script");
-        liteChart.src="./includes/liteChart.min.js";
-        document.getElementsByTagName("head")[0].appendChild(liteChart);
-        let biojs = document.createElement("script");
-        biojs.src="./includes/biorhythm.js";
-        document.getElementsByTagName("head")[0].appendChild(biojs); */
 
     } 

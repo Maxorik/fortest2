@@ -319,6 +319,10 @@ b{
     color:darkred;
 }
 
+a{
+    color:yellow;
+}
+
 .btnmiddle a{
     text-decoration: none;
     color: beige;
@@ -400,3 +404,6 @@ b{
     font-style: normal;
 }
 
+.pagepunkt, h3, h4, h1, h2, strong{
+    padding: 0 20%;
+}
