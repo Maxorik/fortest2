@@ -1,8 +1,8 @@
 ﻿#wapp{
 margin:0 auto 0;
 position: absolute;
-bottom: 20px;
-right:30px;
+bottom: 1.5em;
+right:2em;
 }
 
 .pulse-button{
@@ -12,25 +12,20 @@ left:50%;
 margin-left:-20px;
 margin-top:-20px;
 display: block;
-width:40px;
-height:40px;
+width:3em;
+height: 3em;
 font-size:1.3em;
 font-weight:bold;
 color:#fff;
 text-shadow:0 1px 0 #1f4c76;
-border:1px solid #6dc7f1;
+border:1px solid #fff;
 box-shadow:0 0 0 0 rgba(90, 153, 220, 0.7), inset 0 1px 0 #abcbe9;
 border-radius:100%;
-v-align:middle;
-background:#6dc7f1;
-background-image:-webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, #6ea6d9), color-stop(100%, #468ccf));
-background-image:-webkit-linear-gradient(#6ea6d9, #468ccf);
-background-image:-moz-linear-gradient(#6ea6d9, #468ccf);
-background-image:-o-linear-gradient(#6ea6d9, #468ccf);
-background-image:linear-gradient(#6ea6d9, #468ccf);
+background:#fff;
 cursor:pointer;
-    background-image: url(wapp.png);
-    background-size: 40px 40px;
+    background-image: url(wa.png);
+    background-repeat: no-repeat;
+    background-size: 3em 3em;
 -webkit-animation: pulse 1s infinite cubic-bezier(0.6, 0, 0, 1)}
 
 .pulse-button:hover{
