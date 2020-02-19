@@ -67,6 +67,7 @@ if(window.matchMedia('(max-width: 980px)').matches){
     txt.style.fontSize = '2.5em';
     cross.style.fontSize = '3em';
     cross.style.top = '-45%';
+    cross.style.padding = '2px 10px';
 }
 
 
