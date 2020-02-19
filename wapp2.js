@@ -45,6 +45,14 @@ cross.addEventListener('click', function hide_wapp(){
     pulsebutton.style.webkitAnimation = 'pulse 1s infinite cubic-bezier(0.6, 0, 0, 1)';
     wapp2.style.backgroundColor = 'transparent';
     wapp2.style.width = '22%';  //ширина зеленого окна
+    
+    
+    if(window.matchMedia('(max-width: 980px)').matches){
+        wapp2.style.left = '3em';
+        pulsebutton.style.width='5em';
+        pulsebutton.style.height= '5em';
+        pulsebutton.style.backgroundSize='5em 5em';
+    }
 
     let cssAnimation = document.createElement('style');
     cssAnimation.type = 'text/css';
@@ -98,7 +106,7 @@ if(window.matchMedia('(max-width: 980px)').matches){
     txt.style.fontSize = '2.5em';
     cross.style.fontSize = '3em';
     cross.style.top = '-45%';
-    cross.style.padding = '2px 10px';
+    cross.style.padding = '2px 16px';
 }
 
 
