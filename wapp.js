@@ -54,11 +54,11 @@ cross.addEventListener('click', function hide_wapp(){
 if(window.matchMedia('(max-width: 980px)').matches){
     let txt = document.querySelector('.wapp_txt');
     let logo = document.querySelector('.wapp_logo');
-    wapp2.style.width = '40%';
+    wapp2.style.width = '80%';
     wapp2.style.height = '20%';
     logo.width = '200px';
     logo.height = '200px';
-    txt.style.fontSize = '3em';
+    txt.style.fontSize = '2em';
     cross.style.top = '-38%';
 }
 
