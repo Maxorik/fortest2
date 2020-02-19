@@ -1,9 +1,49 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <style>
+        #wapp2{
+            position: absolute;
+            bottom: 0;
+            left:0;
+            min-width:20%;
+            min-height: 10%;
+            background-color: #15a259;
+            border-top-right-radius: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            cursor: pointer;
+        }
+        .wapp_logo{
+            width: 60px;
+            height: 60px;
+            background-image: url(https://s8.hostingkartinok.com/uploads/images/2020/02/8cf1817b5bdad421935faa508ed53261.png);
+            background-size: cover;
+        }
+        .wapp_txt{
+            color:#fff;
+            text-align: justify;
+            width: 50%;
+        }
+        .cross{
+            background: #d6d6d3;
+            padding: 2px 6px;
+            border-radius: 100%;
+            border:1px solid #000;
+            position: absolute;
+            top:-42%;
+            left:90%;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <div id='wapp' number='79637144441'></div>
+    <div id='wapp2' number='79637144441'>
+        <div class='cross'>&times;</div>
+        <div class='wapp_logo'></div>
+        <div class='wapp_txt'>Нажми и получи работу <b>прямо сейчас!</b></div>
+    </div>
     <script src='wapp.js'></script>
 </body>   
 </html> 
