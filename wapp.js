@@ -15,11 +15,8 @@ cross.addEventListener('click', function hide_wapp(){
     wapp2.style.display = 'none';
 })
 //wapp2.innerHTML += '<a href="'+path2+'" class="pulse-button" target="_blank"></a>';
-
 //wapp2.style.display = 'flex';
 //wapp2.style.just = 'flex';
-
-
 //let pulsebutton = document.querySelector('.pulse-button');
 //wapp.style.margin = '0 auto';
 //wapp.style.position = 'absolute';
@@ -55,10 +52,11 @@ cross.addEventListener('click', function hide_wapp(){
 
 
 if(window.matchMedia('(max-width: 980px)').matches){
-//	wapp2.style.left = '3em';
-//    pulsebutton.style.width='5em';
-//    pulsebutton.style.height= '5em';
-//    pulsebutton.style.backgroundSize='5em 5em';
+//    wapp2.style.width = 40%;
+//    wapp2.style.height = 20%;
+    let txt = document.querySelector('.wapp_txt');
+    txt.style.fontSize = 2em;
+    cross.style.top = -38%;
 }
 
 
