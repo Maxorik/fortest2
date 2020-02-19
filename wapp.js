@@ -55,11 +55,12 @@ if(window.matchMedia('(max-width: 980px)').matches){
     let txt = document.querySelector('.wapp_txt');
     let logo = document.querySelector('.wapp_logo');
     wapp2.style.width = '80%';
-    wapp2.style.height = '20%';
+    wapp2.style.height = '10%';
     logo.width = '200px';
     logo.height = '200px';
-    txt.style.fontSize = '2em';
-    cross.style.top = '-38%';
+    txt.style.fontSize = '2.5em';
+    cross.style.top = '-30%';
+    cross.style.fontSize = '4em';
 }
 
 
