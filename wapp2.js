@@ -64,7 +64,7 @@ if(window.matchMedia('(max-width: 980px)').matches){
     logo.style.width = '160px';   //ширина картинки
     logo.style.height = '160px';  //высота
     txt.style.fontSize = '2.5em';
-    cross.style.top = '-35%';
+    cross.style.top = '-40%';
     cross.style.fontSize = '3em';
 }
 
