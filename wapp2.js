@@ -26,8 +26,8 @@ cross.addEventListener('click', function hide_wapp(){
     let pulsebutton = document.querySelector('.pulse-button');
     pulsebutton.style.position='fixed';
     pulsebutton.style.bottom='20px';
-    pulsebutton.style.marginLeft='-20px';
-    pulsebutton.style.marginTop='-20px';
+    pulsebutton.style.marginLeft='-70px';
+    pulsebutton.style.marginTop='-30px';
     pulsebutton.style.display= 'block';
     pulsebutton.style.width='3em';
     pulsebutton.style.height= '3em';
