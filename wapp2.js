@@ -61,10 +61,10 @@ cross.style.cursor = 'pointer';
 if(window.matchMedia('(max-width: 980px)').matches){
     wapp2.style.width = '80%';  //ширина зеленого окна
     wapp2.style.height = '10%'; //высота
+    wapp2.style.minHeight = '160px';
     logo.style.width = '160px';   //ширина картинки
     logo.style.height = '160px';  //высота
     txt.style.fontSize = '2.5em';
-    cross.style.top = '-40%';
     cross.style.fontSize = '3em';
 }
 
