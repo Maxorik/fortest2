@@ -21,37 +21,28 @@ wapp2.addEventListener('click', function call_wapp(event){
 
 let cross = document.querySelector('.cross');
 cross.addEventListener('click', function hide_wapp(){
-    wapp2.innerHTML = '<a href="'+path2+'" class="pulse-button" target="_blank"></a>';
-
-    let pulsebutton = document.querySelector('.pulse-button');
-    pulsebutton.style.position='fixed';
-    pulsebutton.style.bottom='20px';
-    pulsebutton.style.marginLeft='-70px';
-    pulsebutton.style.marginTop='-30px';
-    pulsebutton.style.display= 'block';
-    pulsebutton.style.width='3em';
-    pulsebutton.style.height= '3em';
-    pulsebutton.style.fontSize='1.3em';
-    pulsebutton.style.color='#fff';
-    pulsebutton.style.textShadow='0 1px 0 #1f4c76';
-    pulsebutton.style.border='1px solid #fff';
-    pulsebutton.style.boxShadow='0 0 0 0 rgba(90, 153, 220, 0.7), inset 0 1px 0 #abcbe9';
-    pulsebutton.style.borderRadius='100%';
-    pulsebutton.style.background='#fff';
-    pulsebutton.style.cursor='pointer';
-    pulsebutton.style.backgroundRepeat= 'no-repeat';
-    pulsebutton.style.backgroundSize='3em 3em';
-    pulsebutton.style.backgroundImage = 'url(https://s8.hostingkartinok.com/uploads/images/2020/02/8cf1817b5bdad421935faa508ed53261.png)';
-    pulsebutton.style.webkitAnimation = 'pulse 1s infinite cubic-bezier(0.6, 0, 0, 1)';
-    wapp2.style.backgroundColor = 'transparent';
-    wapp2.style.width = '22%';  //ширина зеленого окна
-    
-    
+    wapp2.style.transition = 'bottom 1s, left 1s, width 1s, border-radius 1s, height 1s';
+    logo.style.position = 'absolute';
+    logo.style.left = '10%';
+    cross.remove();
+    txt.remove();
+    wapp2.style.width = '79px';
+    wapp2.style.height = '79px';
+    wapp2.style.justifyContent='center';
+    wapp2.style.borderRadius = '5000px';
+    wapp2.style.textShadow='0 1px 0 #1f4c76';
+    wapp2.style.boxShadow='0 0 0 0 rgba(90, 153, 220, 0.7), inset 0 1px 0 #abcbe9';
+    wapp2.style.bottom = '5%';
+    wapp2.style.left = '5%';
+    logo.style.backgroundImage = 'url(https://s8.hostingkartinok.com/uploads/images/2020/02/46653e7211d5f50a1d36a24c90f378a1.png)';
+    wapp2.style.webkitAnimation = 'pulse 1s infinite cubic-bezier(0.6, 0, 0, 1)';
+   
     if(window.matchMedia('(max-width: 980px)').matches){
-        wapp2.style.left = '3em';
-        pulsebutton.style.width='5em';
-        pulsebutton.style.height= '5em';
-        pulsebutton.style.backgroundSize='5em 5em';
+//        wapp2.style.transition = 'bottom 1s, left 1s, width 1s, border-radius 1s, height 1s';
+        wapp2.style.width = '200px';
+        wapp2.style.height = '200px';
+        wapp2.style.bottom = '5%';
+        wapp2.style.left = '5%';
     }
 
     let cssAnimation = document.createElement('style');
@@ -87,7 +78,7 @@ txt.style.textAlign = 'justify';
 txt.style.width = '50%';
 
 //крестик
-cross.style.background = '#d6d6d3'; //фон
+cross.style.background = 'transparent'; //фон
 cross.style.padding = '2px 8px';
 cross.style.borderRadius = '100%';
 cross.style.border = '1px solid #000';
