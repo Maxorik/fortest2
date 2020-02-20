@@ -7,6 +7,7 @@ let phone2 = wapp2.getAttribute('number');
 let txt = document.querySelector('.wapp_txt');
 let logo = document.querySelector('.wapp_logo');
 
+
 //текст исходящего сообщения от пользователя  %20 - знак пробела
 let message = 'Добрый день!%20Прошу%20проконсультировать%20меня%20касательно%20открытых%20вакансий';
 let path2 = 'https://wa.me/' + phone2 + '/?text=' + message;
@@ -20,9 +21,15 @@ wapp2.addEventListener('click', function call_wapp(event){
 })
 
 let cross = document.querySelector('.cross');
+cross.classList.add('inf','noninf');
+
+let inf = document.querySelector('.inf');
+let noninf = document.querySelector('.noninf');
+
 cross.addEventListener('click', function hide_wapp(){
     wapp2.style.transition = 'bottom 1s, left 1s, width 1s, border-radius 1s, height 1s';
     logo.style.position = 'absolute';
+    logo.style.zIndex = '10';
     logo.style.left = '10%';
     cross.remove();
     txt.remove();
@@ -35,10 +42,13 @@ cross.addEventListener('click', function hide_wapp(){
     wapp2.style.bottom = '5%';
     wapp2.style.left = '5%';
     logo.style.backgroundImage = 'url(https://s8.hostingkartinok.com/uploads/images/2020/02/46653e7211d5f50a1d36a24c90f378a1.png)';
-    wapp2.style.webkitAnimation = 'pulse 1s infinite cubic-bezier(0.6, 0, 0, 1)';
+
+    let flip = setTimeout(function flipper(){
+        logo.style.transformStyle = 'preserve-3d';
+        logo.style.animation = 'main-rotate 0.5s 1 linear';
+    },3000);   
    
     if(window.matchMedia('(max-width: 980px)').matches){
-//        wapp2.style.transition = 'bottom 1s, left 1s, width 1s, border-radius 1s, height 1s';
         wapp2.style.width = '200px';
         wapp2.style.height = '200px';
         wapp2.style.bottom = '5%';
@@ -49,14 +59,14 @@ cross.addEventListener('click', function hide_wapp(){
     cssAnimation.type = 'text/css';
     let rules = document.createTextNode('@-webkit-keyframes pulse {'+
     'to{box-shadow:0 0 0 15px rgba(90, 153, 220, 0), inset 0 1px 0 #abcbe9}'+
-    '}');
+    '}' + '@keyframes main-rotate { 100% { transform: rotateY(720deg); } }');
     cssAnimation.appendChild(rules);
     document.getElementsByTagName("head")[0].appendChild(cssAnimation);
 })
 
 //стили десктопа
 wapp2.style.position = 'absolute';
-wapp2.style.bottom = '0';
+wapp2.style.bottom = '-10%';
 wapp2.style.left = '0';
 wapp2.style.width = '20%';  //ширина зеленого окна
 wapp2.style.height = '10%'; //высота
@@ -66,6 +76,11 @@ wapp2.style.display = 'flex';
 wapp2.style.justifyContent = 'space-around';
 wapp2.style.alignItems = 'center';
 wapp2.style.cursor = 'pointer';
+wapp2.style.transition = 'bottom 1s';
+
+let anhover = setTimeout(function show(){
+    wapp2.style.bottom = '0';
+},500);
 
 //картинка - логотип вотсап
 logo.style.width='60px'; //ширина
@@ -92,12 +107,14 @@ if(window.matchMedia('(max-width: 980px)').matches){
     wapp2.style.width = '80%';  //ширина зеленого окна
     wapp2.style.height = '12%'; //высота
     wapp2.style.minHeight = '160px';
+    wapp2.style.borderTopRightRadius = '60px';
     logo.style.width = '160px';   //ширина картинки
     logo.style.height = '160px';  //высота
     txt.style.fontSize = '2.5em';
+    txt.style.width = '70%';
     cross.style.fontSize = '3em';
     cross.style.top = '-45%';
-    cross.style.padding = '2px 20px';
+    cross.style.padding = '2px 18px';
 }
 
 
