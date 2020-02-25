@@ -2,117 +2,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
   </head>
 
   <body>
-      <div style = 'display: none; width:100%; justify-content: space-around'>
-          <div class='newf' style='background : orange; padding: 4px 12px;'>Новая форма</div>
-          <div class='oldf' style='background: yellow; padding:4px 12px;'>Старая форма</div>
+      <div style='display: flex; justify-content: space-around; align-items: center'>
+          <div class='btn_new' style='background:yellow; padding: 2px 10px'>новая</div>
+          <div class='btn_old' style='background:orange; padding: 2px 10px'>старая</div>
       </div>
-
-  <form class="forma_partner" the_style='new'>
-    <div class="decor">
-      <div class="form-inner">
-<!--        <h3 style="text-align: center;">Бесплатная консультация астролога, гадалки или экстрасенса после регистрации</h3>-->
-        <div>
-          <div class="col-left">
-            <div><textarea type="text" class="question" style='height:250px;' placeholder="Напишите ваш вопрос гадалке"></textarea></div>
-            <div><input type="text" class="name" value="" placeholder="Имя"></div>
-            <div class="div-phone">
-              <img src="https://astro7.ru/fileadmin/templates/images/flags/ru.png" style="width:16px; height:11px;" alt="">
-              <span><select class="country-select" data-size="5" data-tabindex="6">
-                  <option value="az" kod="+994 ">Азербайджан</option>
-                  <option value="am" kod="+374 ">Армения</option>
-                  <option value="by" kod="+375 ">Беларусь</option>
-                  <option value="ge" kod="+995 ">Грузия</option>
-                  <option value="il" kod="+972 ">Израиль</option>
-                  <option value="kz" kod="+77 ">Казахстан</option>
-                  <option value="kg" kod="+996 ">Киргизия</option>
-                  <option value="lv" kod="+371 ">Латвия</option>
-                  <option value="lt" kod="+370 ">Литва</option>
-                  <option value="md" kod="+373 ">Молдова</option>
-                  <option value="ru" kod="+7 " selected="">Россия</option>
-                  <option value="tj" kod="+992 ">Таджикистан</option>
-                  <option value="tm" kod="+993 ">Туркмения</option>
-                  <option value="tr" kod="+90 ">Турция</option>
-                  <option value="uz" kod="+998 ">Узбекистан</option>
-                  <option value="ua" kod="+380 ">Украина</option>
-                  <option value="ee" kod="+372 ">Эстония</option>
-                </select></span><input type="text" class="prefix-phone" disabled="" value="+7 "><input type="number" class="phone" value="" placeholder="Телефон">
-            </div>
-          </div>
-          <div class="col-right">
-            <div class="date_b">
-              <select class="day_b" data-size="5">
-                  <option value="0">День</option>
-              </select>
-                <select class="mesyac_b" data-size="5">
-                <option value="0">Месяц</option>
-              </select>
-                <select class="god_b" data-size="5" data-tabindex="5">
-                <option value="0">Год</option>
-              </select>
-            </div>
-            <input type="email" class="email" placeholder="e-mail" inputmode="email">
-          </div>
-        </div><button class="btn send_partner">Отправить</button>
-        <div style="margin-top: 14px; font-size: 10px;line-height: 15px;">
-          <input type="checkbox" checked="" disabled="" style="height: 14px; width: 14px; margin: 0; padding: 0; line-height: 10px; float: left;    margin-right: 4px;"><span class='rules'>Я принимаю <a href="https://www.liveexpert.ru/help/terms" target="_blank">условия</a> пользовательского соглашения</span></div>
-      </div>
-    </div>
-  </form>
+      <form class="forma_partner" the_style='old'></form>
+      <script src='regform.js'></script>
       
-<!--  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||    -->
-      <div style='background: #0b233f; display: flex; justify-content: center; align-items: center;'>
-      
-      <div id="form-messages" class="form"><div id="le-popup-wrapper">
-        <div class="le-form-wrapper" style="max-width: 450px;">
-            <div class="le-text-wrapper" style="text-align: center;color: #666;font-size: 15px;font-family: 'PTSans',sans-serif;">
-                <p><span style="color: #ffffff;"><strong>Напишите Ваш вопрос гадалке</strong></span></p>
-        <form id="le-custom-form">
-    <div style="margin-bottom: 10px;">
-     <textarea name="topic" rows="5" id="topic_title" style="width: 90%;display: inline-block;background: #fff;border: 1px solid #ccc;border-radius: 4px;box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);padding: 8px 10px;line-height: 40px;font-size: 1.1em;font-family: Roboto,'PT Sans',sans-serif;color: #2b2b2b;" required="" minlength="15" placeholder=""></textarea>
-     </div>
-     <div style="margin-bottom: 10px;">
-     <p><span style="color: #ffffff;"><strong>Укажите Ваш Email</strong></span></p>
-     <input type="email" name="email" id="topic_email" style="width: 90%;display: inline-block;background: #fff;border: 1px solid #ccc;border-radius: 4px;box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);padding: 0 10px;height: 40px;line-height: 46px;font-size: 1.1em;font-family: Roboto,'PT Sans',sans-serif;color: #2b2b2b;" required="" maxlength="60" placeholder="" inputmode="email">
-     </div>
-     <div style="margin-bottom: 10px;">
-     <p><span style="color: #ffffff;"><strong>Укажите Ваше имя</strong></span></p>
-     <input type="text" name="name" id="topic_name" style="width: 90%;display: inline-block;background: #fff;border: 1px solid #ccc;border-radius: 4px;box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);padding: 0 10px;height: 40px;line-height: 46px;font-size: 1.1em;font-family: Roboto,'PT Sans',sans-serif;color: #2b2b2b;" required="" maxlength="48" placeholder="">
-     </div>
-     <div style="margin-bottom: 10px;">
-     <p><span style="color: #ffffff;"><strong>Ваша дата рождения</strong></span></p>
-     <input type="text" name="birthdate" id="topic_birthday" style="width: 90%;display: inline-block;background: #fff;border: 1px solid #ccc;border-radius: 4px;box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);padding: 0 10px;height: 40px;line-height: 46px;font-size: 1.1em;font-family: Roboto,'PT Sans',sans-serif;color: #2b2b2b;" required="" maxlength="48" placeholder="">
-     </div> 
-    <div style="margin-bottom: 10px;">
-     <p><span style="color: #ffffff;"><strong>Ваш телефон</strong></span></p>
-     <input type="number" name="phone" id="topic_phone" style="width: 90%;display: inline-block;background: #fff;border: 1px solid #ccc;border-radius: 4px;box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);padding: 0 10px;height: 40px;line-height: 46px;font-size: 1.1em;font-family: Roboto,'PT Sans',sans-serif;color: #2b2b2b;">
-     </div> 
-     <div style="margin-bottom: 10px;">
-     <input type="submit" value="ОТПРАВИТЬ" id="le-submit" style="background: #FFE35F;color: #000;font-family: 'PTSans',sans-serif;font-size: 16px;text-transform: uppercase;border-radius: 5px;padding: 9px 58px;display: inline-block;margin-bottom: 0;font-weight: normal;text-align: center;vertical-align: middle;touch-action: manipulation;cursor: pointer;border: 1px solid transparent;white-space: nowrap; line-height: 1.42857143;">
-     <p>Не забудьте проверить вашу почту.</p>
-     <p style="font-size: 7px;color: grey;">*для получения бесплатных ответов Ваш E-mail будет автоматически зарегистрирован на LiveExpert. ru, проходя регистрацию вы соглашаетесь с данным <a href="https://www.liveexpert.ru/help/terms" target="_blank" rel="nofollow noopener noreferrer">пользовательским соглашением</a>.</p>
-     </div>
-     <input type="hidden" name="category" value="10">
-     </form>
-     </div>
-     <div id="success-message" style="display: none;">
-     </div>
-     <div id="error-message" style="display: none;">
-     <p>
-     Произошла ошибка!<br>
-     Пожалуйста, попробуйте позже.
-     </p>
-     </div>
-     </div>
-    </div>
-      </div>
-          
-<!--     фон     -->
-      </div>
     
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
- <script src='regform.js'></script>
 </body>
 </html>
