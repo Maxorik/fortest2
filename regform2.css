@@ -1,0 +1,149 @@
+    .decor {
+      position: relative;
+      margin: 20px auto 0;
+      background: #0b233f;                      /*  ЦВЕТ САМОЙ ФОРМЫ  */
+      border: 2px solid #fff;
+      border-radius: 8px;
+    }
+    .form-inner {padding: 40px;}
+    .form-inner input,
+    .form-inner textarea {
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      padding: 0 20px;
+      margin-bottom: 10px;
+      background-color: #fff !important;
+      line-height: 40px;
+      margin: 14px 3px;
+      border-width: 0;
+      font-family: 'Roboto', sans-serif;
+      outline: none;
+      border: 1px transparent solid;
+      height: 40px;
+    }
+    .form-inner .send_partner {
+      margin-top: 30px;
+      background: #ffe35f;
+      color: #000;
+      font-size: 14px;
+      display: block;
+      width: 70%;
+      margin: auto;
+      padding: 0 20px;
+      line-height: 40px;
+      font-family: 'Roboto', sans-serif;
+      outline: none;
+    }
+    .form-inner .send_partner:hover{
+        background: #e7bf00;
+    }
+    .form-inner textarea {resize: none;}
+    .form-inner h3 {
+      margin-top: 0;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .form-inner div{
+        width:100%;
+    }
+        /*  */
+    .forma_partner {
+      max-width: 500px;         
+      margin: 0 auto;
+      padding: 1px 20px 46px;
+    }
+    .col-left {
+      /*width: 50%;*/
+      /*float: left;*/
+      /*padding-right: 5px;*/
+    }
+    .col-right {
+      /*width: 50%;*/
+      /*float: right;*/
+      /*padding-left: 5px;*/
+    }
+    .forma_partner select {
+      padding: 11px 5px 2px;
+      margin-bottom: 10px;
+       background: #fff;        /*  ЦВЕТ СЕЛЕКТОРОВ    */  
+      line-height: 40px;
+      border-width: 0;
+      /* border-radius: 20px; */
+      font-family: 'Roboto', sans-serif;
+      outline: none;
+      border: 1px transparent solid;
+      cursor: pointer;
+    }
+    .forma_partner .date_b {
+      background: #fff;         /*  ЦВЕТ СТРОКИ  С день, месяц, год    */
+      padding: 0px 5px;
+      text-align: center;
+      height: 42px;
+      margin-bottom: 10px;
+      margin: 14px 0px;
+      margin-left: 2px;
+    }
+    .country-select {
+      width: 24px;
+      cursor: pointer;
+    }
+    .div-phone {
+      display: flex;
+      width: 100%;
+      background: #fff;      /*  ЦВЕТ СТРОКИ  С  ТЕЛЕФОНОМ    */
+      height: 40px;
+      padding-left: 18px;
+      margin: 14px 0px;
+      margin-left: 2px;
+    }
+    .div-phone img {
+      margin: 12px 0px 0px 6px;
+    }
+    .forma_partner .phone {
+      margin: 0 !important;
+      padding-left: 0px !important;
+      border-radius: 0px 20px 20px 0px !important;
+    }
+    .phone::-webkit-outer-spin-button,
+    .phone::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+    .prefix-phone {
+      width: 40px !important;
+      margin: 0px !important;
+      border-color: transparent !important;
+      border-radius: 0 !important;
+      padding: 0px !important;
+      color: #000;
+      text-align: center;
+    }
+    .rules{
+        color: #fff;
+    }
+    
+    @media screen and (max-width: 768px) {
+      body {
+        padding: unset;
+      }
+/*
+      .forma_partner {
+        padding: 1px 6px 46px;
+      }
+*/
+      .forma_partner .form-inner {
+          padding: 30px 25px;
+      }
+      .forma_partner .col-right, .forma_partner .col-left {
+        width: 100%;
+        padding: unset;
+      }
+      .forma_partner .phone {
+          margin-bottom: 2px;
+      }
+    }
