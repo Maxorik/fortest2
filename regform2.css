@@ -147,3 +147,9 @@
           margin-bottom: 2px;
       }
     }
+
+    @media screen and (max-width: 321px) {
+        .date_b{
+            font-size: 11px;
+        }
+    }
