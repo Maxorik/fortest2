@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+</head>
+<body> 
+    
+    <div id="chords_here" style="display: grid; grid-template-columns: repeat(15, 100px); grid-auto-rows: 150px;"></div>
+
+<script>    
+    function parse_chords() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './chords.min.json', false);
+        xhr.send();
+        if (xhr.status != 200) {
+            results = JSON.parse(xhr.responseText).chords;
+        }
+        
+        for(chord in results) {
+            draw_chord(results[chord]);
+        }
+        
+    }
+    
+    parse_chords();
+    
+    function draw_chord(chord_params) {        
+        let main_container_begin = '<svg width="100%"viewBox="0 0 80 70"><g transform="translate(13, 13)"><g><path stroke="#444" stroke-width="0.25" stroke-linecap="square" stroke-linejoin="square" d="M 0 0 H 50 M 0 12 H 50 M 0 24 H 50 M 0 36 H 50 M 0 48 H 50M 0 0 V 48 M 10 0 V 48 M 20 0 V 48 M 30 0 V 48 M 40 0 V 48 M 50 0 V 48"></path>';
+        let chord_name = chord_params.name;     // Название аккорда
+        let chord_fret = fret = chord_params.lad !== '1' ? chord_params.lad : '';
+        chord_fret = '<text font-size="0.55rem" fill="#444" font-family="Verdana" x="-11" y="9">' + chord_fret + '</text>';       // Номер лада, если он != 1;  Надпись 3fr
+        let tab = chord_params.tabs.split(','); 
+        let dots = '';  // точки
+        let bare = '';  // барре
+        let main_container_end = '</g></g></svg>';
+        
+        const yy = [6,18,30,42];
+        
+        // точки
+        for(let i=0; i<tab.length; i++) {
+            if(+tab[i] < 0) {
+                dots += '<text font-size="0.7rem" fill="#444" font-family="Verdana" text-anchor="middle" x="' + (i * 10) +  '" y="-2">x</text>';
+            } else if(tab[i] != 0) {
+                dots += '<circle stroke-width="0.25" stroke="#444" fill="#444" cx="' + (i * 10) + '" cy="' + yy[tab[i] - 1] + '" r="4"></circle>';
+            }
+        }
+
+        if(chord_params.bare > 0) {
+            let bare_pos = [];
+            const yy_bare = [2,14,26,38];
+            for(let i=0; i<tab.length; i++) {
+                if (tab[i] == +chord_params.bare) {
+                    bare_pos.push(i);
+                }
+            }
+            dots += '<rect fill="#444" x="' + bare_pos[0] * 10  + '" y="' + yy_bare[chord_params.bare-1] + '" width="' + (10 * (bare_pos[bare_pos.length - 1] - bare_pos[0])) + '" height="8"></rect>';
+        }
+        
+        let all_picture = '<div><p style="text-align: center">' + chord_name + '</p>' + main_container_begin + chord_fret + dots + main_container_end + '</div>';
+        
+        chords_here.innerHTML += all_picture;     
+    
+    }
+    
+</script>
+</body>
+</html>
