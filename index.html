@@ -1,21 +1,75 @@
+<!--
+collections - список треков
+floating action buttons - кнопка выпадает в меню
+
+-->
+
+
 <!doctype html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <title>Tabs library</title>
     <link rel="stylesheet" href='style.css'>    
+    <link rel="stylesheet" href="materialize/css/materialize.min.css">    
 </head>
-<body>
-    <div class='track_list'>
-        <div class='track_container'>
-            <div class='track_name'>SSShhhiiittt! 19</div>
-            <div class='track_controller'>
-                <div class='track_edit'>E</div>
-                <div class='track_delete'>D</div>
+<body>    
+    <div style="margin: 10px">
+        <a id='btn_get' class="waves-effect waves-light btn"><i class="material-icons left">get_app</i>Get songs</a>
+        <a id='btn_set' class="waves-effect waves-light btn"><i class="material-icons left">note_add</i>Add songs</a>
+    </div>
+    
+    <div style="display: flex; flex-direction: column; margin: 50px;">
+        <div class="input-field col s6" style="width: 300px;">
+          <input id="song_name" type="text" class="validate">
+          <label for="song_name">Название</label>
+        </div>
+        <div class='inline_elems'>
+            <p class="flow-text">Аккорды</p>
+            <div style="position: relative; height: 70px;">
+              <div class="fixed-action-btn horizontal direction-top direction-left" style="position: absolute; display: inline-block; left: 10px;" id="btn_list_chords">
+                <a class="btn-floating btn-small waves-green">
+                    <i class="material-icons">add</i>
+                </a>
+                <div class='float_list'>
+                    <ul>
+                        <li><a id='btn_add_chords_another' class="btn-floating waves-effect waves-light btn float_list_elem">Прочее</a></li>
+                        <li><a id='btn_add_chords_bridge' class="btn-floating waves-effect waves-light btn float_list_elem">Бридж</a></li>
+                        <li><a id='btn_add_chords_chorus' class="btn-floating waves-effect waves-light btn float_list_elem">Припев</a></li>
+                        <li><a id='btn_add_chords_couplet' class="btn-floating waves-effect waves-light btn float_list_elem">Куплет</a></li>
+                    </ul>
+                </div>
+              </div>
             </div>
         </div>
+        <div id='new_chords_container'>
+        
+        </div>
+        
+<!--
+        <div class='container_chords' style="display: flex; flex-direction: row">
+            <a class="waves-effect waves-light btn-small" style='width: 50px;'><i class="material-icons left">delete_forever</i></a>
+            <div class="flow-text" style="margin: 0 10px;">Куплет</div>
+        </div>
+-->
+<!--
+        <div>Аккорды <br /> 
+            <p>Куплет<input type="text" id='chords_kuplet'></p>
+            <p>Припев<input type="text" id='chords_pripev'></p>
+        </div>
+        <div>Ритмический рисунок <br /> 
+            <p>Куплет<input type="text" id='rhythm_kuplet'></p>
+            <p>Припев<input type="text" id='rhythm_pripev'></p>
+        </div>
+        <p>Текст <input type="textarea" id='song_text'></p>
+        <p>Ссылка на ютуб <input type="text" id='song_youtube'></p>
+-->
     </div>
+    
+    <br/>
+    <div id='songs'></div>
 
 <script src="script.js"></script>
+<script src="materialize/js/materialize.js"></script>
 </body>
 </html>

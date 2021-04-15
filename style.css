@@ -1,8 +1,28 @@
-body{
+body, p {
     padding: 0;
     margin: 0;
 }
 
 .track_container{
     font-size: 3em;
+}
+
+.float_list_elem {
+    border-radius: 0 !important;
+    width: 80px !important;
+}
+
+.inline_elems {
+    display: flex;
+    flex-direction: row;
+}
+
+.float_list {
+    position: absolute;
+    left: 140px;
+    top: 140px;
+}
+
+.float_list ul li {
+    margin: 0 0 2px 0 !important;
 }
