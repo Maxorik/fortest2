@@ -26,3 +26,7 @@ body, p {
 .float_list ul li {
     margin: 0 0 2px 0 !important;
 }
+
+.btn-icon {
+    width: 50px;
+}

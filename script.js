@@ -125,11 +125,10 @@ async function deleteStore(e) {
 *   Добавить элемент на форму
 **/
 function addHtmlElement(id) {
-    let btn_del_html = '<a class="waves-effect waves-light btn"><i class="material-icons left">delete</i></a>', 
+    let btn_del_html = '<a class="waves-effect waves-light btn-small btn-icon btn-delete"><i class="material-icons left">delete</i></a>', 
         htmlText = '',
         chord_store = '',
-        type_text_html = '<p class="flow-text">' + htmlText + '</p>',
-        new_chord_list_html = '<div class="input-field" style="70px"><select class="icons" id='chords'>'
+        new_chord_list_html = '<div class="input-field" style="70px"><select class="icons" id="chords">'
     
 //    <div class="input-field">
 //        <select class="icons" id='chords'>
@@ -158,5 +157,16 @@ function addHtmlElement(id) {
             htmlText = 'Прочее';
             break;
     }
-        
+    
+    new_chords_container.innerHTML += '<div style="display: flex" class="chord_row">' + btn_del_html + '<p class="flow-text">' + htmlText + '</p>' + '<br/></div>';   
+    
+    let delete_btns = document.querySelectorAll('.btn-delete');
+    for(let i=0; i<delete_btns.length; i++) {
+        delete_btns[i].addEventListener('click',  () => delete_chord_container(event));
+    }
+}
+
+function delete_chord_container(e) {
+    let todelete = e.target.parentElement.classList.contains('chord_row') ? e.target.parentElement : e.target.parentElement.parentElement;
+    todelete.parentElement.removeChild(todelete);
 }
